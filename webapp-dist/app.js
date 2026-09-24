@@ -4,9 +4,9 @@
  */
 
 const STORAGE_KEYS = {
-  QUESTIONS: 'uav_expert_questions_v2',
-  USER_PROGRESS: 'uav_expert_progress_v2',
-  SETTINGS: 'uav_expert_settings_v2'
+  QUESTIONS: 'uav_expert_questions_v3',
+  USER_PROGRESS: 'uav_expert_progress_v3',
+  SETTINGS: 'uav_expert_settings_v3'
 };
 
 class DroneQuizApp {
@@ -358,6 +358,12 @@ class DroneQuizApp {
             ${extensions.map(sub => {
               const subQuestions = this.questions.filter(q => q.topic && (q.topic.includes(sub.title) || q.subjectId === sub.id));
               const count = subQuestions.length;
+              const subSingles = subQuestions.filter(q => q.type === 'single').length;
+              const subMultis = subQuestions.filter(q => q.type === 'multi').length;
+              const subJudges = subQuestions.filter(q => q.type === 'judge').length;
+              const subFills = subQuestions.filter(q => q.type === 'fill').length;
+              const subShorts = subQuestions.filter(q => q.type === 'short').length;
+
               return `
                 <div class="rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 p-5 shadow-lg flex flex-col justify-between transition hover:-translate-y-0.5">
                   <div>
@@ -366,7 +372,7 @@ class DroneQuizApp {
                         ${sub.categoryBadge}
                       </span>
                       <span class="text-xs ${count > 0 ? 'text-cyan-400 font-bold' : 'text-slate-500'}">
-                        ${count > 0 ? `已录入 ${count} 题` : '当前 0 题 · 拓展口就绪'}
+                        ${count > 0 ? `已收录 ${count} 题 · 5类题型` : '当前 0 题 · 拓展口就绪'}
                       </span>
                     </div>
 
@@ -374,7 +380,18 @@ class DroneQuizApp {
                       ${sub.title}
                     </h3>
                     <p class="text-xs text-slate-400 mt-1 line-clamp-1">${sub.subtitle}</p>
-                    <p class="text-xs text-slate-400 mt-2 line-clamp-2 leading-relaxed">${sub.description}</p>
+
+                    ${count > 0 ? `
+                      <div class="flex flex-wrap items-center gap-1.5 my-2.5">
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 font-medium">单选 ${subSingles}</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-400 font-medium">多选 ${subMultis}</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-teal-500/10 text-teal-400 font-medium">判断 ${subJudges}</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 font-medium">填空 ${subFills}</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded bg-rose-500/10 text-rose-400 font-medium">简答 ${subShorts}</span>
+                      </div>
+                    ` : ''}
+
+                    <p class="text-xs text-slate-400 mt-1 line-clamp-2 leading-relaxed">${sub.description}</p>
                   </div>
 
                   <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
@@ -385,8 +402,8 @@ class DroneQuizApp {
                       <button onclick='app.openImportForSubject("${sub.id}")' class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition" title="导入此学科专属题库">
                         导入题目
                       </button>
-                      <button onclick='app.navigate("subject_detail", ${JSON.stringify(sub)})' class="px-3 py-1 rounded bg-cyan-600/30 hover:bg-cyan-600 text-cyan-300 hover:text-white text-xs font-medium transition">
-                        查看看板
+                      <button onclick='app.navigate("subject_detail", ${JSON.stringify(sub)})' class="px-3 py-1 rounded bg-cyan-600/30 hover:bg-cyan-600 text-cyan-300 hover:text-white text-xs font-bold transition">
+                        题型专练
                       </button>
                     </div>
                   </div>
@@ -407,6 +424,12 @@ class DroneQuizApp {
 
     const subQuestions = this.questions.filter(q => q.topic && (q.topic.includes(sub.title) || q.subjectId === sub.id));
     const isPrimary = sub.isPrimary === true;
+
+    const subSingles = subQuestions.filter(q => q.type === 'single');
+    const subMultis = subQuestions.filter(q => q.type === 'multi');
+    const subJudges = subQuestions.filter(q => q.type === 'judge');
+    const subFills = subQuestions.filter(q => q.type === 'fill');
+    const subShorts = subQuestions.filter(q => q.type === 'short');
 
     return `
       <div class="space-y-6">
@@ -431,17 +454,126 @@ class DroneQuizApp {
 
           <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
             <div class="text-sm text-slate-400">
-              题库收录情况：<span class="font-bold text-white">${subQuestions.length > 0 ? `${subQuestions.length} 道题目` : '0 道（暂未录入题目）'}</span>
+              题库收录情况：<span class="font-bold text-white">${subQuestions.length > 0 ? `${subQuestions.length} 道题目 (5类题型已齐备)` : '0 道（暂未录入题目）'}</span>
             </div>
             <div class="flex space-x-3">
-              <button onclick='app.openImportForSubject("${sub.id}")' class="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold shadow transition">
-                + 为本科目导入题库 (Word/文本)
+              <button onclick='app.openImportForSubject("${sub.id}")' class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold border border-slate-700 shadow transition">
+                + 补充/导入题库
               </button>
               ${subQuestions.length > 0 ? `
-                <button onclick='app.startQuizWithList("${sub.title} 专项特训", ${JSON.stringify(subQuestions)})' class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold shadow transition">
-                  开始答题
+                <button onclick='app.startSubjectQuizByType("${sub.id}", null)' class="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold shadow transition">
+                  全部题型综合答题
                 </button>
               ` : ''}
+            </div>
+          </div>
+        </div>
+
+        <!-- Question Type Classification Section (题型分类专练) -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+              <i data-lucide="layers" class="w-5 h-5 text-cyan-400"></i>
+              <span>题型分类专练</span>
+            </h2>
+            <span class="text-xs text-slate-400">点击任意题型直接进入针对性特训</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <!-- 综合全部 -->
+            <div onclick='app.startSubjectQuizByType("${sub.id}", null)' class="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/60 cursor-pointer transition hover:-translate-y-0.5 group">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold text-white group-hover:text-cyan-400 transition">全部题型 · 综合练习</div>
+                    <div class="text-xs text-slate-400">全科目全考点随机/顺序测评</div>
+                  </div>
+                </div>
+                <span class="text-sm font-black text-cyan-400">${subQuestions.length} 题</span>
+              </div>
+            </div>
+
+            <!-- 单选题 -->
+            <div onclick='app.startSubjectQuizByType("${sub.id}", "single")' class="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-sky-500/60 cursor-pointer transition hover:-translate-y-0.5 group">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center">
+                    <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold text-white group-hover:text-sky-400 transition">单选题专练</div>
+                    <div class="text-xs text-slate-400">核心指标与基础原理辨析</div>
+                  </div>
+                </div>
+                <span class="text-sm font-black text-sky-400">${subSingles.length} 题</span>
+              </div>
+            </div>
+
+            <!-- 多选题 -->
+            <div onclick='app.startSubjectQuizByType("${sub.id}", "multi")' class="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-purple-500/60 cursor-pointer transition hover:-translate-y-0.5 group">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                    <i data-lucide="list-checks" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold text-white group-hover:text-purple-400 transition">多选题专练</div>
+                    <div class="text-xs text-slate-400">技术特征全面排查与细化考查</div>
+                  </div>
+                </div>
+                <span class="text-sm font-black text-purple-400">${subMultis.length} 题</span>
+              </div>
+            </div>
+
+            <!-- 判断题 -->
+            <div onclick='app.startSubjectQuizByType("${sub.id}", "judge")' class="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-teal-500/60 cursor-pointer transition hover:-translate-y-0.5 group">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 rounded-lg bg-teal-500/10 text-teal-400 flex items-center justify-center">
+                    <i data-lucide="help-circle" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold text-white group-hover:text-teal-400 transition">判断题专练</div>
+                    <div class="text-xs text-slate-400">真伪技术概念快速辨析与定性</div>
+                  </div>
+                </div>
+                <span class="text-sm font-black text-teal-400">${subJudges.length} 题</span>
+              </div>
+            </div>
+
+            <!-- 填空题 -->
+            <div onclick='app.startSubjectQuizByType("${sub.id}", "fill")' class="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-amber-500/60 cursor-pointer transition hover:-translate-y-0.5 group">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
+                    <i data-lucide="edit-3" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold text-white group-hover:text-amber-400 transition">填空题专练</div>
+                    <div class="text-xs text-slate-400">关键指标、物理频段与协议填空</div>
+                  </div>
+                </div>
+                <span class="text-sm font-black text-amber-400">${subFills.length} 题</span>
+              </div>
+            </div>
+
+            <!-- 简答题 -->
+            <div onclick='app.startSubjectQuizByType("${sub.id}", "short")' class="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-rose-500/60 cursor-pointer transition hover:-translate-y-0.5 group">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <div class="w-10 h-10 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold text-white group-hover:text-rose-400 transition">简答分析题专练</div>
+                    <div class="text-xs text-slate-400">实战部署论述与系统设计专家标准</div>
+                  </div>
+                </div>
+                <span class="text-sm font-black text-rose-400">${subShorts.length} 题</span>
+              </div>
             </div>
           </div>
         </div>
@@ -483,6 +615,17 @@ class DroneQuizApp {
     const list = this.questions.filter(q => q.type === type);
     const typeNames = { single: '单选题', multi: '多选题', judge: '判断题', fill: '填空题', short: '简答题' };
     this.startQuizWithList(typeNames[type] || '题型专练', list, `共 ${list.length} 道针对性专项突破题`);
+  }
+
+  startSubjectQuizByType(subjectId, type = null) {
+    const sub = (window.INITIAL_SUBJECTS && window.INITIAL_SUBJECTS.extensions.find(s => s.id === subjectId)) ||
+      (window.INITIAL_SUBJECTS && window.INITIAL_SUBJECTS.primary.id === subjectId ? window.INITIAL_SUBJECTS.primary : null);
+    const title = sub ? sub.title : '科目专项';
+    const subQuestions = this.questions.filter(q => q.topic && (q.topic.includes(title) || q.subjectId === subjectId));
+    const list = type ? subQuestions.filter(q => q.type === type) : subQuestions;
+    const typeNames = { single: '单选题', multi: '多选题', judge: '判断题', fill: '填空题', short: '简答题' };
+    const typeLabel = type ? typeNames[type] : '全部题型';
+    this.startQuizWithList(`${title} · ${typeLabel}`, list, `学科专属 · ${typeLabel}定向特训`);
   }
 
   startQuizWithList(title, list, subtitle = '') {

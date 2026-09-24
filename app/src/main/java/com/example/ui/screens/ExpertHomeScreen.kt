@@ -57,6 +57,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.data.model.QuestionType
 import com.example.data.model.QuestionWithProgress
 import com.example.data.model.SubjectCatalog
 import com.example.data.model.SubjectInfo
@@ -134,11 +135,15 @@ fun ExpertHomeScreen(
         }
 
         // 3. Primary Subject Card: 无人机技术基础
+        val primaryQuestions = allQuestions.filter {
+            it.question.topic.contains(SubjectCatalog.PRIMARY_SUBJECT.title) ||
+            SubjectCatalog.EXTENSION_SUBJECTS.none { ext -> it.question.topic.contains(ext.title) }
+        }
         item {
             PrimarySubjectCard(
                 subject = SubjectCatalog.PRIMARY_SUBJECT,
-                questionCount = totalCount,
-                answeredCount = answeredCount,
+                questionCount = primaryQuestions.size,
+                answeredCount = primaryQuestions.count { it.isAnswered },
                 onClick = { onOpenSubject(SubjectCatalog.PRIMARY_SUBJECT) }
             )
         }
@@ -168,12 +173,12 @@ fun ExpertHomeScreen(
                         color = MaterialTheme.colorScheme.onBackground
                     )
                     Surface(
-                        color = CyanPrimary.copy(alpha = 0.15f),
+                        color = GreenCorrect.copy(alpha = 0.15f),
                         shape = RoundedCornerShape(6.dp)
                     ) {
                         Text(
-                            text = "拓展口已就绪",
-                            color = CyanPrimary,
+                            text = "各科已全面扩充",
+                            color = GreenCorrect,
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp)
@@ -182,7 +187,7 @@ fun ExpertHomeScreen(
                 }
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "包含低空反制、雷达、无线电、光电与电磁干扰学科体系，已开放题库拓展导入接口",
+                    text = "包含低空反制、雷达、无线电、光电与电磁干扰学科，各模块已扩充200+高难度专业题库",
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -191,12 +196,12 @@ fun ExpertHomeScreen(
 
         // 6. 5 Extension Subject Cards
         items(SubjectCatalog.EXTENSION_SUBJECTS) { subject ->
-            val subCount = allQuestions.count {
+            val subQuestions = allQuestions.filter {
                 it.question.topic.contains(subject.title) || it.question.topic == subject.title
             }
             ExtensionSubjectCard(
                 subject = subject,
-                questionCount = subCount,
+                subjectQuestions = subQuestions,
                 onClick = { onOpenSubject(subject) }
             )
         }
@@ -503,9 +508,10 @@ private fun PrimarySubjectCard(
 @Composable
 private fun ExtensionSubjectCard(
     subject: SubjectInfo,
-    questionCount: Int,
+    subjectQuestions: List<QuestionWithProgress>,
     onClick: () -> Unit
 ) {
+    val questionCount = subjectQuestions.size
     val subjectIcon: ImageVector = when (subject.id) {
         "counter_uas_tech" -> Icons.Default.Shield
         "radar_detection" -> Icons.Default.Radar
@@ -514,6 +520,12 @@ private fun ExtensionSubjectCard(
         "electromagnetic_jamming" -> Icons.Default.Sensors
         else -> Icons.Default.FolderOpen
     }
+
+    val singles = subjectQuestions.count { it.question.type == QuestionType.SINGLE }
+    val multis = subjectQuestions.count { it.question.type == QuestionType.MULTI }
+    val judges = subjectQuestions.count { it.question.type == QuestionType.JUDGE }
+    val fills = subjectQuestions.count { it.question.type == QuestionType.FILL }
+    val shorts = subjectQuestions.count { it.question.type == QuestionType.SHORT }
 
     Card(
         shape = RoundedCornerShape(14.dp),
@@ -570,16 +582,31 @@ private fun ExtensionSubjectCard(
                     shape = RoundedCornerShape(6.dp)
                 ) {
                     Text(
-                        text = if (questionCount > 0) "$questionCount 道试题" else "拓展口已就绪",
+                        text = if (questionCount > 0) "已收录 $questionCount 题 · 5类题型" else "拓展口已就绪",
                         color = if (questionCount > 0) GreenCorrect else MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 11.sp,
-                        fontWeight = FontWeight.Medium,
+                        fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(horizontal = 7.dp, vertical = 3.dp)
                     )
                 }
             }
 
             Spacer(modifier = Modifier.height(10.dp))
+
+            // Question Type breakdown chips
+            if (questionCount > 0) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    TypeChip(name = "单选", count = singles, color = Color(0xFF0284C7))
+                    TypeChip(name = "多选", count = multis, color = Color(0xFF7C3AED))
+                    TypeChip(name = "判断", count = judges, color = Color(0xFF0D9488))
+                    TypeChip(name = "填空", count = fills, color = Color(0xFFD97706))
+                    TypeChip(name = "简答", count = shorts, color = Color(0xFFE11D48))
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+            }
 
             Text(
                 text = subject.description,
@@ -614,9 +641,9 @@ private fun ExtensionSubjectCard(
 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = "查看大纲与拓展口",
+                        text = "进入题型专练",
                         fontSize = 12.sp,
-                        fontWeight = FontWeight.Medium,
+                        fontWeight = FontWeight.Bold,
                         color = CyanPrimary
                     )
                     Spacer(modifier = Modifier.width(3.dp))
@@ -628,6 +655,37 @@ private fun ExtensionSubjectCard(
                     )
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun TypeChip(
+    name: String,
+    count: Int,
+    color: Color
+) {
+    Surface(
+        color = color.copy(alpha = 0.12f),
+        shape = RoundedCornerShape(4.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 5.dp, vertical = 2.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = name,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Medium,
+                color = color
+            )
+            Spacer(modifier = Modifier.width(3.dp))
+            Text(
+                text = "$count",
+                fontSize = 10.sp,
+                fontWeight = FontWeight.Bold,
+                color = color
+            )
         }
     }
 }

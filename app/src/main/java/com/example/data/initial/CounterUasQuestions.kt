@@ -1,0 +1,2798 @@
+package com.example.data.initial
+
+import com.example.data.model.Question
+import com.example.data.model.QuestionType
+import com.example.data.model.QuizOption
+
+val counterUasQuestions: List<Question> = listOf(
+    Question(
+        id = "cuas-single-001",
+        type = QuestionType.SINGLE,
+        question = "“低慢小”（LSS）航空器通常是指飞行高度在1000米以下、飞行时速小于多少千米，且雷达反射截面积（RCS）通常在2平方米以下的飞行器？",
+        options = listOf(
+            QuizOption("A", "150千米/小时"),
+            QuizOption("B", "200千米/小时"),
+            QuizOption("C", "250千米/小时"),
+            QuizOption("D", "300千米/小时"),
+        ),
+        answer = listOf("B"),
+        explanation = "“低慢小”航空器国家标准通用定义通常指飞行高度在1000米以下、飞行速度小于200千米/小时（或约55m/s）、雷达反射截面积（RCS）在2m²以下的微轻小型飞行器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-single-002",
+        type = QuestionType.SINGLE,
+        question = "民用无人机通常使用的ISM开放图传与遥控主要工作频段不包括以下哪一项？",
+        options = listOf(
+            QuizOption("A", "2.4 GHz"),
+            QuizOption("B", "5.8 GHz"),
+            QuizOption("C", "433 MHz / 900 MHz"),
+            QuizOption("D", "10.5 GHz (X波段)"),
+        ),
+        answer = listOf("D"),
+        explanation = "主流民用消费级与行业级无人机的遥控及图传链路主要分布在433MHz、840/900MHz、1.2GHz/1.4GHz、2.4GHz与5.8GHz，10.5GHz属于X波段雷达频段，非无人机通信信道。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-single-003",
+        type = QuestionType.SINGLE,
+        question = "无人机无线电探测技术（RF侦测）相对于雷达探测最突出的优势是：",
+        options = listOf(
+            QuizOption("A", "可直接测出目标的三维物理尺寸"),
+            QuizOption("B", "被动无辐射侦收，零电磁干扰且隐蔽性极高"),
+            QuizOption("C", "即使无人机完全无线电静默也能100%发现"),
+            QuizOption("D", "受复杂天气（如大雾大雨）衰减影响最大"),
+        ),
+        answer = listOf("B"),
+        explanation = "无线电侦测（RF）属于被动被动监听，不主动向外发射电磁波，具备零辐射、对民航通信无干扰、隐蔽性强且能提取机型电子指纹ID的显著优势。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-single-004",
+        type = QuestionType.SINGLE,
+        question = "针对消费级四旋翼无人机，雷达探测中最核心且最具鉴别力的微动特征是：",
+        options = listOf(
+            QuizOption("A", "机体表面吸波材料反射率"),
+            QuizOption("B", "高速旋转螺旋桨叶片产生的微多普勒频移（Micro-Doppler）"),
+            QuizOption("C", "锂电池工作时的电磁辐射噪声"),
+            QuizOption("D", "机臂倾斜角度变化"),
+        ),
+        answer = listOf("B"),
+        explanation = "微多普勒（Micro-Doppler）效应是雷达区分旋翼无人机与低空慢速飞鸟、风筝等虚警杂波的关键物理特征，旋翼叶片高速旋转会在回波频域产生独特的对称调制边带。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-005",
+        type = QuestionType.SINGLE,
+        question = "在无线电测向定位系统中，TDoA（到达时间差定位）算法至少需要几个空间分布的同步侦测基站才能完成目标二维平面定位？",
+        options = listOf(
+            QuizOption("A", "1个"),
+            QuizOption("B", "2个"),
+            QuizOption("C", "3个"),
+            QuizOption("D", "5个"),
+        ),
+        answer = listOf("C"),
+        explanation = "二维TDoA定位需要解算双曲线交点，两站确定一条双曲线，三站（形成两个独立时差观测量）方可获得唯一交点；若进行三维空间定位则至少需要4个同步基站。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-006",
+        type = QuestionType.SINGLE,
+        question = "反无人机电子干扰枪在对目标实施射频压制时，若仅干扰GPS/北斗卫星导航信号，大多数消费级四旋翼无人机会出现什么反应？",
+        options = listOf(
+            QuizOption("A", "动力立即切断瞬间坠机"),
+            QuizOption("B", "立即执行返航（RTH）飞回飞手身边"),
+            QuizOption("C", "切换为姿态模式（ATTI），随风漂移但飞手仍可手动操控方向"),
+            QuizOption("D", "原地空中翻滚"),
+        ),
+        answer = listOf("C"),
+        explanation = "当仅压制GNSS卫星导航信号时，飞控丢失绝对定位基准，会自动切入气压计与IMU维持的姿态模式（ATTI）。此时定点悬停失效并随风漂移，但飞手依然握有遥控权。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-007",
+        type = QuestionType.SINGLE,
+        question = "若反无人机干扰枪同时阻断无人机的图传/遥控链路（2.4G/5.8G）与GNSS导航信号（1.5G），无人机通常会触发的默认失控保护逻辑是：",
+        options = listOf(
+            QuizOption("A", "自主原路逆向返航"),
+            QuizOption("B", "原地减速并执行平稳垂直迫降（Landing）"),
+            QuizOption("C", "全速向最高限高爬升"),
+            QuizOption("D", "立即引爆炸药或自毁"),
+        ),
+        answer = listOf("B"),
+        explanation = "在遥控信号阻断（无法接收飞手指令）且卫星定位丢失（无法读取返航点经纬度）的双重失控状态下，飞控三级保护机制会强制启动原地缓慢垂直迫降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-single-008",
+        type = QuestionType.SINGLE,
+        question = "卫星导航欺骗（GNSS Spoofing）相比于强功率射频噪声压制干扰的优势在于：",
+        options = listOf(
+            QuizOption("A", "发射功率极大，可覆盖数百公里"),
+            QuizOption("B", "发射功率极低，隐蔽诱导无人机飞往指定安全捕获区，且对周边其他频段无害"),
+            QuizOption("C", "不需要计算卫星星历"),
+            QuizOption("D", "仅能诱导固定翼，无法欺骗多旋翼"),
+        ),
+        answer = listOf("B"),
+        explanation = "GNSS诱骗利用虚假卫星伪距信号平滑接管目标机载GNSS接收机，发射毫瓦级微弱信号即可达成“牵引诱捕”或“虚构禁飞区迫降”，不会对民航高频等产生强功率电磁污染。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-009",
+        type = QuestionType.SINGLE,
+        question = "低空光电探测系统在夜间或浓雾能见度差的恶劣气象环境下，主要依靠哪种传感器实施无人机目标捕获？",
+        options = listOf(
+            QuizOption("A", "超清可见光连续变焦相机"),
+            QuizOption("B", "中波/长波非制冷红外热成像仪（Thermal IR）"),
+            QuizOption("C", "激光准直指示器"),
+            QuizOption("D", "日光滤镜长焦镜头"),
+        ),
+        answer = listOf("B"),
+        explanation = "红外热成像仪检测物体热辐射差异，四旋翼无人机的无刷电机、动力电调及机身摩擦在运转时均散发显著热量，在夜间及烟雾尘霾中具有极强穿透与成像能力。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-single-010",
+        type = QuestionType.SINGLE,
+        question = "反无人机物理“硬杀伤”处置手段不包括以下哪一种？",
+        options = listOf(
+            QuizOption("A", "高能车载激光定向能武器（Laser）"),
+            QuizOption("B", "网捕弹发射器（发射柔性阻拦网缠绕旋翼）"),
+            QuizOption("C", "全频段电磁脉冲压制干扰枪"),
+            QuizOption("D", "微型自杀式无人机空中对撞拦截"),
+        ),
+        answer = listOf("C"),
+        explanation = "电磁压制干扰枪属于典型的“软杀伤（Soft Kill）”技术，通过电磁波破坏其通信或导航控制链路；激光烧蚀、抓捕网缠绕、破片或对撞属于破坏物理实体的“硬杀伤（Hard Kill）”。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-single-011",
+        type = QuestionType.SINGLE,
+        question = "低空防御系统中，光电跟瞄转台常用的激光测距机（LRF）主流人眼安全波长通常为：",
+        options = listOf(
+            QuizOption("A", "1550 nm"),
+            QuizOption("B", "905 nm"),
+            QuizOption("C", "1064 nm"),
+            QuizOption("D", "532 nm"),
+        ),
+        answer = listOf("A"),
+        explanation = "1550nm波长处于人眼晶状体高吸收区且无法到达视网膜，属于国际公认的人眼安全波段（Eye-safe），广泛应用于城市人口密集区的光电火控与测距系统。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-012",
+        type = QuestionType.SINGLE,
+        question = "无线电侦测系统中，AoA（到达角测向）技术最常见的物理天线阵列形式是：",
+        options = listOf(
+            QuizOption("A", "单极子全向天线"),
+            QuizOption("B", "环形多元均匀圆阵或正交阿达玛天线阵"),
+            QuizOption("C", "长导线天线"),
+            QuizOption("D", "抛物面单向喇叭天线"),
+        ),
+        answer = listOf("B"),
+        explanation = "AoA测向通常采用环形多元均匀天线阵列，通过测量入射电磁波在不同阵元间的相位差或波达方向矢量，解算目标的方位角（Azimuth）与俯仰角（Elevation）。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-013",
+        type = QuestionType.SINGLE,
+        question = "在大型露天集会安保中，使用大功率宽带射频压制反制设备最容易带来的连带次生风险是：",
+        options = listOf(
+            QuizOption("A", "导致观众手机屏幕破裂"),
+            QuizOption("B", "阻断周边特警无线对讲通信及民航对空通信"),
+            QuizOption("C", "导致现场广播音响自燃"),
+            QuizOption("D", "造成附近建筑物墙体开裂"),
+        ),
+        answer = listOf("B"),
+        explanation = "宽带射频压制若功率过大或频段未精细滤波，会严重压制周边正常公网移动通信、公安/特警集群对讲机频段以及民航空管导航信道，甚至引发重大次生事故。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-014",
+        type = QuestionType.SINGLE,
+        question = "低空慢速小目标雷达在城市高楼复杂环境中工作时，面临的最大技术挑战是：",
+        options = listOf(
+            QuizOption("A", "高层建筑与树木造成的强地杂波与多径反射干扰"),
+            QuizOption("B", "空气密度过大"),
+            QuizOption("C", "雷达波无法穿透玻璃"),
+            QuizOption("D", "雷达发射机极易结冰"),
+        ),
+        answer = listOf("A"),
+        explanation = "城市环境下建筑楼宇林立，低空超强地杂波与密集多径效应回波严重淹没微弱的无人机反射信号，动目标检测（MTD）与动目标显示（MTI）抑制杂波是雷达核心难点。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-015",
+        type = QuestionType.SINGLE,
+        question = "针对采用自主航线飞行、且完全关闭无线电图传与遥控通信的“无线电静默”无人机，以下哪种探测手段依然有效？",
+        options = listOf(
+            QuizOption("A", "被动式无线电频谱侦测仪"),
+            QuizOption("B", "低空微动探测雷达与全天候光电侦搜联动"),
+            QuizOption("C", "无线电协议逆向解析设备"),
+            QuizOption("D", "移动电话信令追踪器"),
+        ),
+        answer = listOf("B"),
+        explanation = "当无人机实行绝对无线电静默时不向外发射任何电磁信号，所有被动无线电设备均失效；但其物理实体反射雷达波、散发热量并具备光学图像，雷达与光电依然能有效捕获。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-016",
+        type = QuestionType.SINGLE,
+        question = "针对微型四旋翼大疆Mavic 3等目标，其在Ku波段典型的雷达散射截面积（RCS）量级通常约为：",
+        options = listOf(
+            QuizOption("A", "0.01 m² 至 0.03 m²"),
+            QuizOption("B", "1.0 m² 至 2.0 m²"),
+            QuizOption("C", "10 m²"),
+            QuizOption("D", "0.5 m²"),
+        ),
+        answer = listOf("A"),
+        explanation = "消费级轻小型塑料/碳纤维四旋翼无人机的金属反射面积极小，其典型RCS值在Ku/X波段仅约为0.01~0.03m²，属于典型的隐身级微弱雷达回波目标。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-017",
+        type = QuestionType.SINGLE,
+        question = "无人机反制中所谓的“协议破解（Protocol Hijacking / 协议诱骗）”技术是指：",
+        options = listOf(
+            QuizOption("A", "向无人机投掷实体阻拦网"),
+            QuizOption("B", "分析无人机控制私有通信协议，伪造合法飞控指令接管控制权"),
+            QuizOption("C", "用激光熔毁机壳"),
+            QuizOption("D", "使用锤子击碎遥控器"),
+        ),
+        answer = listOf("B"),
+        explanation = "协议破解反制通过截获并逆向解调无人机数传链路的帧结构、校验码与加密算法，模拟飞手遥控器发送认证指令，实现平稳接管油门并引导降落的无损精细处置。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-018",
+        type = QuestionType.SINGLE,
+        question = "便携式反无人机电磁枪通常采用什么类型的天线来保证高方向性与作业距离？",
+        options = listOf(
+            QuizOption("A", "全向鞭状天线"),
+            QuizOption("B", "高增益定向周期偶极子或微带贴片定向天线阵"),
+            QuizOption("C", "铁氧体磁棒天线"),
+            QuizOption("D", "半波对称振子"),
+        ),
+        answer = listOf("B"),
+        explanation = "反制枪必须在1~2公里距离内集中辐射能量，因此均配备高增益定向天线（如对数周期天线或八木定向天线），实现窄波束、高功率密度的视距精准打击。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-019",
+        type = QuestionType.SINGLE,
+        question = "根据公安部与民航局防范“黑飞”要求，重点要地周界反无人机防御纵深部署通常划分为哪三个同心防御圈？",
+        options = listOf(
+            QuizOption("A", "侦测预警区（早期发现）、确认跟踪区（识别锁定）、核心处置区（驱离压制）"),
+            QuizOption("B", "起飞区、巡航区、返航区"),
+            QuizOption("C", "内保区、外勤区、缓冲区"),
+            QuizOption("D", "禁飞区、适飞区、限飞区"),
+        ),
+        answer = listOf("A"),
+        explanation = "要地综合防御工程规范遵循梯次纵深原则：外围远距离（3~5km）雷达/无线电侦测预警，中距离（1~3km）光电取证锁定，核心近距（1km内）实施电磁压制或网捕处置。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-020",
+        type = QuestionType.SINGLE,
+        question = "声音探测（声学传感器阵列）在低空无人机反制中的主要特点是：",
+        options = listOf(
+            QuizOption("A", "探测距离超远，可达20公里以上"),
+            QuizOption("B", "不受非视距遮挡限制，但作用距离近（通常几百米内）且极易受城市背景噪声干扰"),
+            QuizOption("C", "可以在雨雾天替代雷达"),
+            QuizOption("D", "能够直接击落无人机"),
+        ),
+        answer = listOf("B"),
+        explanation = "声学传感器阵列依靠麦克风拾取旋翼周期性啸叫音，具有无视视距遮挡的优势，但在城市复杂声学环境中衰减极快，受车流等环境噪音干扰大，探测半径一般局限于300米内。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-021",
+        type = QuestionType.SINGLE,
+        question = "[专题考点21] 无人机反制装备在处置非授权航模或穿越机（FPV）时，传统无线电协议解析往往失效，主要原因是：",
+        options = listOf(
+            QuizOption("A", "FPV多采用模拟模拟图传（5.8GHz）与ELRS/CRSF开源跳频遥控协议，无固定明文特征ID"),
+            QuizOption("B", "FPV飞行速度超过第一宇宙速度"),
+            QuizOption("C", "FPV不会发射无线电波"),
+            QuizOption("D", "FPV具备机载相控阵雷达"),
+        ),
+        answer = listOf("A"),
+        explanation = "穿越机（FPV）普遍采用纯模拟5.8GHz调频图传以及ELRS、Crossfire等高敏捷跳频无线电遥控，没有大疆等品牌的数字化电子车牌协议，解析难度极大。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-022",
+        type = QuestionType.SINGLE,
+        question = "[专题考点22] 高功率微波武器（HPM）摧毁无人机集群的核心物理毁伤机理是：",
+        options = listOf(
+            QuizOption("A", "利用强电磁脉冲经天线或机体缝隙耦合进入内部，产生千伏级感应高压击穿烧毁半导体芯片与电路"),
+            QuizOption("B", "加热无人机机身至数千摄氏度熔化"),
+            QuizOption("C", "消耗周围空气使无刷电机缺氧熄火"),
+            QuizOption("D", "利用引力波将无人机推开"),
+        ),
+        answer = listOf("A"),
+        explanation = "HPM（高功率微波）属于前门/后门强电磁脉冲耦合破坏，瞬间产生的瞬态高电场通过电路板线路感应出破坏性浪涌，直接烧毁敏感CMOS芯片与飞控微控制器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-023",
+        type = QuestionType.SINGLE,
+        question = "[专题考点23] 激光武器在反无人机硬毁伤应用中，受以下哪种气象条件的影响衰减最为严重？",
+        options = listOf(
+            QuizOption("A", "重度雾霾与大团浓雾天气"),
+            QuizOption("B", "零下20度的严寒低温"),
+            QuizOption("C", "晴空烈日无风"),
+            QuizOption("D", "轻度空气微风"),
+        ),
+        answer = listOf("A"),
+        explanation = "激光在大气中传输受水汽颗粒、气溶胶的米氏散射与吸收效应极强，大雾、浓烟与沙尘会使激光束能量急剧发散衰减，无法在目标机体形成足够的功率密度烧蚀。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-024",
+        type = QuestionType.SINGLE,
+        question = "[专题考点24] 无人机防御系统中的“综合态势融合（Data Fusion）”通常将多传感器信息汇聚处理，其中最经典的滤波跟踪算法是：",
+        options = listOf(
+            QuizOption("A", "扩展卡尔曼滤波算法（EKF）或交互式多模型（IMM）算法"),
+            QuizOption("B", "MD5信息摘要算法"),
+            QuizOption("C", "快速傅里叶反变换"),
+            QuizOption("D", "图像双线性插值算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "在雷达点迹、无线电测向线与光电角度的融合跟踪中，采用IMM交互式多模型与EKF扩展卡尔曼滤波对目标位置、速度和加速度进行最优时空联合估计。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-025",
+        type = QuestionType.SINGLE,
+        question = "[专题考点25] 无人机电子围栏（Geo-fencing）功能通常依赖飞控内部的固件禁飞区数据库与以下哪一系统提供的时间与三维空间坐标？",
+        options = listOf(
+            QuizOption("A", "机载卫星导航接收机（GNSS）"),
+            QuizOption("B", "超声波定高计"),
+            QuizOption("C", "磁力计"),
+            QuizOption("D", "光流传感器"),
+        ),
+        answer = listOf("A"),
+        explanation = "电子围栏需要依靠机载GNSS模块实时接收GPS/北斗卫星广播，获取自身经纬度与高程，与机载禁飞区坐标库进行交叠比对以执行限高或强制返航。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-026",
+        type = QuestionType.SINGLE,
+        question = "[专题考点26] 在城市重点安保中，使用无人机反制系统必须取得何种合规前置审批？",
+        options = listOf(
+            QuizOption("A", "当地无线电管理委员会（无管局）的频段使用许可及公安/空管部门的报备授权"),
+            QuizOption("B", "气象局的天气降雨许可"),
+            QuizOption("C", "环保局的噪音分贝报告"),
+            QuizOption("D", "市政绿化委员会批准"),
+        ),
+        answer = listOf("A"),
+        explanation = "反制设备向空中发射无线电干扰信号，必须严格向国家及地方无线电管理委员会申请特定频段、发射功率与使用时段许可，并获公安部门协同授权。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-027",
+        type = QuestionType.SINGLE,
+        question = "[专题考点27] 对于采用跳频通信（FHSS）的无人机遥控链路，宽带干扰机若要实现有效压制，其干扰功率谱密度通常必须满足：",
+        options = listOf(
+            QuizOption("A", "在跳频带宽范围内形成足够的信干比（通常J/S > 10~15 dB）"),
+            QuizOption("B", "发射功率小于无人机遥控器发射功率"),
+            QuizOption("C", "频率与无人机跳频频率相反"),
+            QuizOption("D", "只发射直流电平信号"),
+        ),
+        answer = listOf("A"),
+        explanation = "抗跳频压制干扰要求在跳频分布的整个工作带宽内，干扰信号到达无人机天线处的电平强度显著压制原遥控信号，信干比（J/S）必须大于解调门限。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-028",
+        type = QuestionType.SINGLE,
+        question = "[专题考点28] 光电吊舱在对无人机实施自动闭环跟踪时，常用的目标视觉识别算法架构属于：",
+        options = listOf(
+            QuizOption("A", "基于卷积神经网络（CNN/YOLO/SiamRPN）的相关滤波与深度学习目标检测"),
+            QuizOption("B", "冒泡排序匹配算法"),
+            QuizOption("C", "霍夫圆变换"),
+            QuizOption("D", "矢量图形绘制算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "现代光电转台基于深度学习神经网络（如YOLO系列与孪生网络SiamRPN），在复杂天空云层与地面背景中快速框选微小无人机外形，驱动转台电机闭环随动。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-029",
+        type = QuestionType.SINGLE,
+        question = "[专题考点29] 当雷达发现低空慢速小目标时，区分多旋翼无人机与单只飞鸟的核心回波判据是：",
+        options = listOf(
+            QuizOption("A", "多旋翼回波具有周期性宽带微多普勒频谱（对称翼尖闪烁），飞鸟则是低频躯体拍打多普勒"),
+            QuizOption("B", "飞鸟不会反射雷达波"),
+            QuizOption("C", "无人机没有雷达回波"),
+            QuizOption("D", "雷达屏幕上无人机呈红色，飞鸟呈绿色"),
+        ),
+        answer = listOf("A"),
+        explanation = "多旋翼叶片高速旋转形成的线速度高达百米每秒，产生跨度极宽且具有恒定脉冲周期的微多普勒侧带（闪烁特征）；飞鸟翅膀扇动频率通常仅几赫兹，两者时频图截然不同。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-030",
+        type = QuestionType.SINGLE,
+        question = "[专题考点30] 反无人机车载网捕系统中，阻拦网将无人机捕获迫降的物理原因在于：",
+        options = listOf(
+            QuizOption("A", "高强度尼龙/芳纶纤维网瞬间缠绕卡死多旋翼电机的桨叶，切断机械动力升力"),
+            QuizOption("B", "网能够吸收无人机的无线电信号"),
+            QuizOption("C", "网内部含有磁铁吸引电池"),
+            QuizOption("D", "网在空中散发出麻醉气体"),
+        ),
+        answer = listOf("A"),
+        explanation = "网捕弹发射出的柔性网张开后缠绕高速旋转的螺旋桨，瞬间卡滞无刷电机转子导致其过载停转，飞行器完全丧失空气动力学升力而坠落或携带伞降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-031",
+        type = QuestionType.SINGLE,
+        question = "[专题考点31] 无人机反制装备在处置非授权航模或穿越机（FPV）时，传统无线电协议解析往往失效，主要原因是：",
+        options = listOf(
+            QuizOption("A", "FPV多采用模拟模拟图传（5.8GHz）与ELRS/CRSF开源跳频遥控协议，无固定明文特征ID"),
+            QuizOption("B", "FPV飞行速度超过第一宇宙速度"),
+            QuizOption("C", "FPV不会发射无线电波"),
+            QuizOption("D", "FPV具备机载相控阵雷达"),
+        ),
+        answer = listOf("A"),
+        explanation = "穿越机（FPV）普遍采用纯模拟5.8GHz调频图传以及ELRS、Crossfire等高敏捷跳频无线电遥控，没有大疆等品牌的数字化电子车牌协议，解析难度极大。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-032",
+        type = QuestionType.SINGLE,
+        question = "[专题考点32] 高功率微波武器（HPM）摧毁无人机集群的核心物理毁伤机理是：",
+        options = listOf(
+            QuizOption("A", "利用强电磁脉冲经天线或机体缝隙耦合进入内部，产生千伏级感应高压击穿烧毁半导体芯片与电路"),
+            QuizOption("B", "加热无人机机身至数千摄氏度熔化"),
+            QuizOption("C", "消耗周围空气使无刷电机缺氧熄火"),
+            QuizOption("D", "利用引力波将无人机推开"),
+        ),
+        answer = listOf("A"),
+        explanation = "HPM（高功率微波）属于前门/后门强电磁脉冲耦合破坏，瞬间产生的瞬态高电场通过电路板线路感应出破坏性浪涌，直接烧毁敏感CMOS芯片与飞控微控制器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-033",
+        type = QuestionType.SINGLE,
+        question = "[专题考点33] 激光武器在反无人机硬毁伤应用中，受以下哪种气象条件的影响衰减最为严重？",
+        options = listOf(
+            QuizOption("A", "重度雾霾与大团浓雾天气"),
+            QuizOption("B", "零下20度的严寒低温"),
+            QuizOption("C", "晴空烈日无风"),
+            QuizOption("D", "轻度空气微风"),
+        ),
+        answer = listOf("A"),
+        explanation = "激光在大气中传输受水汽颗粒、气溶胶的米氏散射与吸收效应极强，大雾、浓烟与沙尘会使激光束能量急剧发散衰减，无法在目标机体形成足够的功率密度烧蚀。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-034",
+        type = QuestionType.SINGLE,
+        question = "[专题考点34] 无人机防御系统中的“综合态势融合（Data Fusion）”通常将多传感器信息汇聚处理，其中最经典的滤波跟踪算法是：",
+        options = listOf(
+            QuizOption("A", "扩展卡尔曼滤波算法（EKF）或交互式多模型（IMM）算法"),
+            QuizOption("B", "MD5信息摘要算法"),
+            QuizOption("C", "快速傅里叶反变换"),
+            QuizOption("D", "图像双线性插值算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "在雷达点迹、无线电测向线与光电角度的融合跟踪中，采用IMM交互式多模型与EKF扩展卡尔曼滤波对目标位置、速度和加速度进行最优时空联合估计。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-035",
+        type = QuestionType.SINGLE,
+        question = "[专题考点35] 无人机电子围栏（Geo-fencing）功能通常依赖飞控内部的固件禁飞区数据库与以下哪一系统提供的时间与三维空间坐标？",
+        options = listOf(
+            QuizOption("A", "机载卫星导航接收机（GNSS）"),
+            QuizOption("B", "超声波定高计"),
+            QuizOption("C", "磁力计"),
+            QuizOption("D", "光流传感器"),
+        ),
+        answer = listOf("A"),
+        explanation = "电子围栏需要依靠机载GNSS模块实时接收GPS/北斗卫星广播，获取自身经纬度与高程，与机载禁飞区坐标库进行交叠比对以执行限高或强制返航。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-036",
+        type = QuestionType.SINGLE,
+        question = "[专题考点36] 在城市重点安保中，使用无人机反制系统必须取得何种合规前置审批？",
+        options = listOf(
+            QuizOption("A", "当地无线电管理委员会（无管局）的频段使用许可及公安/空管部门的报备授权"),
+            QuizOption("B", "气象局的天气降雨许可"),
+            QuizOption("C", "环保局的噪音分贝报告"),
+            QuizOption("D", "市政绿化委员会批准"),
+        ),
+        answer = listOf("A"),
+        explanation = "反制设备向空中发射无线电干扰信号，必须严格向国家及地方无线电管理委员会申请特定频段、发射功率与使用时段许可，并获公安部门协同授权。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-037",
+        type = QuestionType.SINGLE,
+        question = "[专题考点37] 对于采用跳频通信（FHSS）的无人机遥控链路，宽带干扰机若要实现有效压制，其干扰功率谱密度通常必须满足：",
+        options = listOf(
+            QuizOption("A", "在跳频带宽范围内形成足够的信干比（通常J/S > 10~15 dB）"),
+            QuizOption("B", "发射功率小于无人机遥控器发射功率"),
+            QuizOption("C", "频率与无人机跳频频率相反"),
+            QuizOption("D", "只发射直流电平信号"),
+        ),
+        answer = listOf("A"),
+        explanation = "抗跳频压制干扰要求在跳频分布的整个工作带宽内，干扰信号到达无人机天线处的电平强度显著压制原遥控信号，信干比（J/S）必须大于解调门限。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-038",
+        type = QuestionType.SINGLE,
+        question = "[专题考点38] 光电吊舱在对无人机实施自动闭环跟踪时，常用的目标视觉识别算法架构属于：",
+        options = listOf(
+            QuizOption("A", "基于卷积神经网络（CNN/YOLO/SiamRPN）的相关滤波与深度学习目标检测"),
+            QuizOption("B", "冒泡排序匹配算法"),
+            QuizOption("C", "霍夫圆变换"),
+            QuizOption("D", "矢量图形绘制算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "现代光电转台基于深度学习神经网络（如YOLO系列与孪生网络SiamRPN），在复杂天空云层与地面背景中快速框选微小无人机外形，驱动转台电机闭环随动。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-039",
+        type = QuestionType.SINGLE,
+        question = "[专题考点39] 当雷达发现低空慢速小目标时，区分多旋翼无人机与单只飞鸟的核心回波判据是：",
+        options = listOf(
+            QuizOption("A", "多旋翼回波具有周期性宽带微多普勒频谱（对称翼尖闪烁），飞鸟则是低频躯体拍打多普勒"),
+            QuizOption("B", "飞鸟不会反射雷达波"),
+            QuizOption("C", "无人机没有雷达回波"),
+            QuizOption("D", "雷达屏幕上无人机呈红色，飞鸟呈绿色"),
+        ),
+        answer = listOf("A"),
+        explanation = "多旋翼叶片高速旋转形成的线速度高达百米每秒，产生跨度极宽且具有恒定脉冲周期的微多普勒侧带（闪烁特征）；飞鸟翅膀扇动频率通常仅几赫兹，两者时频图截然不同。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-040",
+        type = QuestionType.SINGLE,
+        question = "[专题考点40] 反无人机车载网捕系统中，阻拦网将无人机捕获迫降的物理原因在于：",
+        options = listOf(
+            QuizOption("A", "高强度尼龙/芳纶纤维网瞬间缠绕卡死多旋翼电机的桨叶，切断机械动力升力"),
+            QuizOption("B", "网能够吸收无人机的无线电信号"),
+            QuizOption("C", "网内部含有磁铁吸引电池"),
+            QuizOption("D", "网在空中散发出麻醉气体"),
+        ),
+        answer = listOf("A"),
+        explanation = "网捕弹发射出的柔性网张开后缠绕高速旋转的螺旋桨，瞬间卡滞无刷电机转子导致其过载停转，飞行器完全丧失空气动力学升力而坠落或携带伞降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-041",
+        type = QuestionType.SINGLE,
+        question = "[专题考点41] 无人机反制装备在处置非授权航模或穿越机（FPV）时，传统无线电协议解析往往失效，主要原因是：",
+        options = listOf(
+            QuizOption("A", "FPV多采用模拟模拟图传（5.8GHz）与ELRS/CRSF开源跳频遥控协议，无固定明文特征ID"),
+            QuizOption("B", "FPV飞行速度超过第一宇宙速度"),
+            QuizOption("C", "FPV不会发射无线电波"),
+            QuizOption("D", "FPV具备机载相控阵雷达"),
+        ),
+        answer = listOf("A"),
+        explanation = "穿越机（FPV）普遍采用纯模拟5.8GHz调频图传以及ELRS、Crossfire等高敏捷跳频无线电遥控，没有大疆等品牌的数字化电子车牌协议，解析难度极大。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-042",
+        type = QuestionType.SINGLE,
+        question = "[专题考点42] 高功率微波武器（HPM）摧毁无人机集群的核心物理毁伤机理是：",
+        options = listOf(
+            QuizOption("A", "利用强电磁脉冲经天线或机体缝隙耦合进入内部，产生千伏级感应高压击穿烧毁半导体芯片与电路"),
+            QuizOption("B", "加热无人机机身至数千摄氏度熔化"),
+            QuizOption("C", "消耗周围空气使无刷电机缺氧熄火"),
+            QuizOption("D", "利用引力波将无人机推开"),
+        ),
+        answer = listOf("A"),
+        explanation = "HPM（高功率微波）属于前门/后门强电磁脉冲耦合破坏，瞬间产生的瞬态高电场通过电路板线路感应出破坏性浪涌，直接烧毁敏感CMOS芯片与飞控微控制器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-043",
+        type = QuestionType.SINGLE,
+        question = "[专题考点43] 激光武器在反无人机硬毁伤应用中，受以下哪种气象条件的影响衰减最为严重？",
+        options = listOf(
+            QuizOption("A", "重度雾霾与大团浓雾天气"),
+            QuizOption("B", "零下20度的严寒低温"),
+            QuizOption("C", "晴空烈日无风"),
+            QuizOption("D", "轻度空气微风"),
+        ),
+        answer = listOf("A"),
+        explanation = "激光在大气中传输受水汽颗粒、气溶胶的米氏散射与吸收效应极强，大雾、浓烟与沙尘会使激光束能量急剧发散衰减，无法在目标机体形成足够的功率密度烧蚀。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-044",
+        type = QuestionType.SINGLE,
+        question = "[专题考点44] 无人机防御系统中的“综合态势融合（Data Fusion）”通常将多传感器信息汇聚处理，其中最经典的滤波跟踪算法是：",
+        options = listOf(
+            QuizOption("A", "扩展卡尔曼滤波算法（EKF）或交互式多模型（IMM）算法"),
+            QuizOption("B", "MD5信息摘要算法"),
+            QuizOption("C", "快速傅里叶反变换"),
+            QuizOption("D", "图像双线性插值算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "在雷达点迹、无线电测向线与光电角度的融合跟踪中，采用IMM交互式多模型与EKF扩展卡尔曼滤波对目标位置、速度和加速度进行最优时空联合估计。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-045",
+        type = QuestionType.SINGLE,
+        question = "[专题考点45] 无人机电子围栏（Geo-fencing）功能通常依赖飞控内部的固件禁飞区数据库与以下哪一系统提供的时间与三维空间坐标？",
+        options = listOf(
+            QuizOption("A", "机载卫星导航接收机（GNSS）"),
+            QuizOption("B", "超声波定高计"),
+            QuizOption("C", "磁力计"),
+            QuizOption("D", "光流传感器"),
+        ),
+        answer = listOf("A"),
+        explanation = "电子围栏需要依靠机载GNSS模块实时接收GPS/北斗卫星广播，获取自身经纬度与高程，与机载禁飞区坐标库进行交叠比对以执行限高或强制返航。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-046",
+        type = QuestionType.SINGLE,
+        question = "[专题考点46] 在城市重点安保中，使用无人机反制系统必须取得何种合规前置审批？",
+        options = listOf(
+            QuizOption("A", "当地无线电管理委员会（无管局）的频段使用许可及公安/空管部门的报备授权"),
+            QuizOption("B", "气象局的天气降雨许可"),
+            QuizOption("C", "环保局的噪音分贝报告"),
+            QuizOption("D", "市政绿化委员会批准"),
+        ),
+        answer = listOf("A"),
+        explanation = "反制设备向空中发射无线电干扰信号，必须严格向国家及地方无线电管理委员会申请特定频段、发射功率与使用时段许可，并获公安部门协同授权。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-047",
+        type = QuestionType.SINGLE,
+        question = "[专题考点47] 对于采用跳频通信（FHSS）的无人机遥控链路，宽带干扰机若要实现有效压制，其干扰功率谱密度通常必须满足：",
+        options = listOf(
+            QuizOption("A", "在跳频带宽范围内形成足够的信干比（通常J/S > 10~15 dB）"),
+            QuizOption("B", "发射功率小于无人机遥控器发射功率"),
+            QuizOption("C", "频率与无人机跳频频率相反"),
+            QuizOption("D", "只发射直流电平信号"),
+        ),
+        answer = listOf("A"),
+        explanation = "抗跳频压制干扰要求在跳频分布的整个工作带宽内，干扰信号到达无人机天线处的电平强度显著压制原遥控信号，信干比（J/S）必须大于解调门限。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-048",
+        type = QuestionType.SINGLE,
+        question = "[专题考点48] 光电吊舱在对无人机实施自动闭环跟踪时，常用的目标视觉识别算法架构属于：",
+        options = listOf(
+            QuizOption("A", "基于卷积神经网络（CNN/YOLO/SiamRPN）的相关滤波与深度学习目标检测"),
+            QuizOption("B", "冒泡排序匹配算法"),
+            QuizOption("C", "霍夫圆变换"),
+            QuizOption("D", "矢量图形绘制算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "现代光电转台基于深度学习神经网络（如YOLO系列与孪生网络SiamRPN），在复杂天空云层与地面背景中快速框选微小无人机外形，驱动转台电机闭环随动。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-049",
+        type = QuestionType.SINGLE,
+        question = "[专题考点49] 当雷达发现低空慢速小目标时，区分多旋翼无人机与单只飞鸟的核心回波判据是：",
+        options = listOf(
+            QuizOption("A", "多旋翼回波具有周期性宽带微多普勒频谱（对称翼尖闪烁），飞鸟则是低频躯体拍打多普勒"),
+            QuizOption("B", "飞鸟不会反射雷达波"),
+            QuizOption("C", "无人机没有雷达回波"),
+            QuizOption("D", "雷达屏幕上无人机呈红色，飞鸟呈绿色"),
+        ),
+        answer = listOf("A"),
+        explanation = "多旋翼叶片高速旋转形成的线速度高达百米每秒，产生跨度极宽且具有恒定脉冲周期的微多普勒侧带（闪烁特征）；飞鸟翅膀扇动频率通常仅几赫兹，两者时频图截然不同。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-050",
+        type = QuestionType.SINGLE,
+        question = "[专题考点50] 反无人机车载网捕系统中，阻拦网将无人机捕获迫降的物理原因在于：",
+        options = listOf(
+            QuizOption("A", "高强度尼龙/芳纶纤维网瞬间缠绕卡死多旋翼电机的桨叶，切断机械动力升力"),
+            QuizOption("B", "网能够吸收无人机的无线电信号"),
+            QuizOption("C", "网内部含有磁铁吸引电池"),
+            QuizOption("D", "网在空中散发出麻醉气体"),
+        ),
+        answer = listOf("A"),
+        explanation = "网捕弹发射出的柔性网张开后缠绕高速旋转的螺旋桨，瞬间卡滞无刷电机转子导致其过载停转，飞行器完全丧失空气动力学升力而坠落或携带伞降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-051",
+        type = QuestionType.SINGLE,
+        question = "[专题考点51] 无人机反制装备在处置非授权航模或穿越机（FPV）时，传统无线电协议解析往往失效，主要原因是：",
+        options = listOf(
+            QuizOption("A", "FPV多采用模拟模拟图传（5.8GHz）与ELRS/CRSF开源跳频遥控协议，无固定明文特征ID"),
+            QuizOption("B", "FPV飞行速度超过第一宇宙速度"),
+            QuizOption("C", "FPV不会发射无线电波"),
+            QuizOption("D", "FPV具备机载相控阵雷达"),
+        ),
+        answer = listOf("A"),
+        explanation = "穿越机（FPV）普遍采用纯模拟5.8GHz调频图传以及ELRS、Crossfire等高敏捷跳频无线电遥控，没有大疆等品牌的数字化电子车牌协议，解析难度极大。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-052",
+        type = QuestionType.SINGLE,
+        question = "[专题考点52] 高功率微波武器（HPM）摧毁无人机集群的核心物理毁伤机理是：",
+        options = listOf(
+            QuizOption("A", "利用强电磁脉冲经天线或机体缝隙耦合进入内部，产生千伏级感应高压击穿烧毁半导体芯片与电路"),
+            QuizOption("B", "加热无人机机身至数千摄氏度熔化"),
+            QuizOption("C", "消耗周围空气使无刷电机缺氧熄火"),
+            QuizOption("D", "利用引力波将无人机推开"),
+        ),
+        answer = listOf("A"),
+        explanation = "HPM（高功率微波）属于前门/后门强电磁脉冲耦合破坏，瞬间产生的瞬态高电场通过电路板线路感应出破坏性浪涌，直接烧毁敏感CMOS芯片与飞控微控制器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-053",
+        type = QuestionType.SINGLE,
+        question = "[专题考点53] 激光武器在反无人机硬毁伤应用中，受以下哪种气象条件的影响衰减最为严重？",
+        options = listOf(
+            QuizOption("A", "重度雾霾与大团浓雾天气"),
+            QuizOption("B", "零下20度的严寒低温"),
+            QuizOption("C", "晴空烈日无风"),
+            QuizOption("D", "轻度空气微风"),
+        ),
+        answer = listOf("A"),
+        explanation = "激光在大气中传输受水汽颗粒、气溶胶的米氏散射与吸收效应极强，大雾、浓烟与沙尘会使激光束能量急剧发散衰减，无法在目标机体形成足够的功率密度烧蚀。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-054",
+        type = QuestionType.SINGLE,
+        question = "[专题考点54] 无人机防御系统中的“综合态势融合（Data Fusion）”通常将多传感器信息汇聚处理，其中最经典的滤波跟踪算法是：",
+        options = listOf(
+            QuizOption("A", "扩展卡尔曼滤波算法（EKF）或交互式多模型（IMM）算法"),
+            QuizOption("B", "MD5信息摘要算法"),
+            QuizOption("C", "快速傅里叶反变换"),
+            QuizOption("D", "图像双线性插值算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "在雷达点迹、无线电测向线与光电角度的融合跟踪中，采用IMM交互式多模型与EKF扩展卡尔曼滤波对目标位置、速度和加速度进行最优时空联合估计。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-055",
+        type = QuestionType.SINGLE,
+        question = "[专题考点55] 无人机电子围栏（Geo-fencing）功能通常依赖飞控内部的固件禁飞区数据库与以下哪一系统提供的时间与三维空间坐标？",
+        options = listOf(
+            QuizOption("A", "机载卫星导航接收机（GNSS）"),
+            QuizOption("B", "超声波定高计"),
+            QuizOption("C", "磁力计"),
+            QuizOption("D", "光流传感器"),
+        ),
+        answer = listOf("A"),
+        explanation = "电子围栏需要依靠机载GNSS模块实时接收GPS/北斗卫星广播，获取自身经纬度与高程，与机载禁飞区坐标库进行交叠比对以执行限高或强制返航。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-056",
+        type = QuestionType.SINGLE,
+        question = "[专题考点56] 在城市重点安保中，使用无人机反制系统必须取得何种合规前置审批？",
+        options = listOf(
+            QuizOption("A", "当地无线电管理委员会（无管局）的频段使用许可及公安/空管部门的报备授权"),
+            QuizOption("B", "气象局的天气降雨许可"),
+            QuizOption("C", "环保局的噪音分贝报告"),
+            QuizOption("D", "市政绿化委员会批准"),
+        ),
+        answer = listOf("A"),
+        explanation = "反制设备向空中发射无线电干扰信号，必须严格向国家及地方无线电管理委员会申请特定频段、发射功率与使用时段许可，并获公安部门协同授权。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-057",
+        type = QuestionType.SINGLE,
+        question = "[专题考点57] 对于采用跳频通信（FHSS）的无人机遥控链路，宽带干扰机若要实现有效压制，其干扰功率谱密度通常必须满足：",
+        options = listOf(
+            QuizOption("A", "在跳频带宽范围内形成足够的信干比（通常J/S > 10~15 dB）"),
+            QuizOption("B", "发射功率小于无人机遥控器发射功率"),
+            QuizOption("C", "频率与无人机跳频频率相反"),
+            QuizOption("D", "只发射直流电平信号"),
+        ),
+        answer = listOf("A"),
+        explanation = "抗跳频压制干扰要求在跳频分布的整个工作带宽内，干扰信号到达无人机天线处的电平强度显著压制原遥控信号，信干比（J/S）必须大于解调门限。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-058",
+        type = QuestionType.SINGLE,
+        question = "[专题考点58] 光电吊舱在对无人机实施自动闭环跟踪时，常用的目标视觉识别算法架构属于：",
+        options = listOf(
+            QuizOption("A", "基于卷积神经网络（CNN/YOLO/SiamRPN）的相关滤波与深度学习目标检测"),
+            QuizOption("B", "冒泡排序匹配算法"),
+            QuizOption("C", "霍夫圆变换"),
+            QuizOption("D", "矢量图形绘制算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "现代光电转台基于深度学习神经网络（如YOLO系列与孪生网络SiamRPN），在复杂天空云层与地面背景中快速框选微小无人机外形，驱动转台电机闭环随动。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-059",
+        type = QuestionType.SINGLE,
+        question = "[专题考点59] 当雷达发现低空慢速小目标时，区分多旋翼无人机与单只飞鸟的核心回波判据是：",
+        options = listOf(
+            QuizOption("A", "多旋翼回波具有周期性宽带微多普勒频谱（对称翼尖闪烁），飞鸟则是低频躯体拍打多普勒"),
+            QuizOption("B", "飞鸟不会反射雷达波"),
+            QuizOption("C", "无人机没有雷达回波"),
+            QuizOption("D", "雷达屏幕上无人机呈红色，飞鸟呈绿色"),
+        ),
+        answer = listOf("A"),
+        explanation = "多旋翼叶片高速旋转形成的线速度高达百米每秒，产生跨度极宽且具有恒定脉冲周期的微多普勒侧带（闪烁特征）；飞鸟翅膀扇动频率通常仅几赫兹，两者时频图截然不同。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-060",
+        type = QuestionType.SINGLE,
+        question = "[专题考点60] 反无人机车载网捕系统中，阻拦网将无人机捕获迫降的物理原因在于：",
+        options = listOf(
+            QuizOption("A", "高强度尼龙/芳纶纤维网瞬间缠绕卡死多旋翼电机的桨叶，切断机械动力升力"),
+            QuizOption("B", "网能够吸收无人机的无线电信号"),
+            QuizOption("C", "网内部含有磁铁吸引电池"),
+            QuizOption("D", "网在空中散发出麻醉气体"),
+        ),
+        answer = listOf("A"),
+        explanation = "网捕弹发射出的柔性网张开后缠绕高速旋转的螺旋桨，瞬间卡滞无刷电机转子导致其过载停转，飞行器完全丧失空气动力学升力而坠落或携带伞降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-061",
+        type = QuestionType.SINGLE,
+        question = "[专题考点61] 无人机反制装备在处置非授权航模或穿越机（FPV）时，传统无线电协议解析往往失效，主要原因是：",
+        options = listOf(
+            QuizOption("A", "FPV多采用模拟模拟图传（5.8GHz）与ELRS/CRSF开源跳频遥控协议，无固定明文特征ID"),
+            QuizOption("B", "FPV飞行速度超过第一宇宙速度"),
+            QuizOption("C", "FPV不会发射无线电波"),
+            QuizOption("D", "FPV具备机载相控阵雷达"),
+        ),
+        answer = listOf("A"),
+        explanation = "穿越机（FPV）普遍采用纯模拟5.8GHz调频图传以及ELRS、Crossfire等高敏捷跳频无线电遥控，没有大疆等品牌的数字化电子车牌协议，解析难度极大。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-062",
+        type = QuestionType.SINGLE,
+        question = "[专题考点62] 高功率微波武器（HPM）摧毁无人机集群的核心物理毁伤机理是：",
+        options = listOf(
+            QuizOption("A", "利用强电磁脉冲经天线或机体缝隙耦合进入内部，产生千伏级感应高压击穿烧毁半导体芯片与电路"),
+            QuizOption("B", "加热无人机机身至数千摄氏度熔化"),
+            QuizOption("C", "消耗周围空气使无刷电机缺氧熄火"),
+            QuizOption("D", "利用引力波将无人机推开"),
+        ),
+        answer = listOf("A"),
+        explanation = "HPM（高功率微波）属于前门/后门强电磁脉冲耦合破坏，瞬间产生的瞬态高电场通过电路板线路感应出破坏性浪涌，直接烧毁敏感CMOS芯片与飞控微控制器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-063",
+        type = QuestionType.SINGLE,
+        question = "[专题考点63] 激光武器在反无人机硬毁伤应用中，受以下哪种气象条件的影响衰减最为严重？",
+        options = listOf(
+            QuizOption("A", "重度雾霾与大团浓雾天气"),
+            QuizOption("B", "零下20度的严寒低温"),
+            QuizOption("C", "晴空烈日无风"),
+            QuizOption("D", "轻度空气微风"),
+        ),
+        answer = listOf("A"),
+        explanation = "激光在大气中传输受水汽颗粒、气溶胶的米氏散射与吸收效应极强，大雾、浓烟与沙尘会使激光束能量急剧发散衰减，无法在目标机体形成足够的功率密度烧蚀。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-064",
+        type = QuestionType.SINGLE,
+        question = "[专题考点64] 无人机防御系统中的“综合态势融合（Data Fusion）”通常将多传感器信息汇聚处理，其中最经典的滤波跟踪算法是：",
+        options = listOf(
+            QuizOption("A", "扩展卡尔曼滤波算法（EKF）或交互式多模型（IMM）算法"),
+            QuizOption("B", "MD5信息摘要算法"),
+            QuizOption("C", "快速傅里叶反变换"),
+            QuizOption("D", "图像双线性插值算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "在雷达点迹、无线电测向线与光电角度的融合跟踪中，采用IMM交互式多模型与EKF扩展卡尔曼滤波对目标位置、速度和加速度进行最优时空联合估计。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-065",
+        type = QuestionType.SINGLE,
+        question = "[专题考点65] 无人机电子围栏（Geo-fencing）功能通常依赖飞控内部的固件禁飞区数据库与以下哪一系统提供的时间与三维空间坐标？",
+        options = listOf(
+            QuizOption("A", "机载卫星导航接收机（GNSS）"),
+            QuizOption("B", "超声波定高计"),
+            QuizOption("C", "磁力计"),
+            QuizOption("D", "光流传感器"),
+        ),
+        answer = listOf("A"),
+        explanation = "电子围栏需要依靠机载GNSS模块实时接收GPS/北斗卫星广播，获取自身经纬度与高程，与机载禁飞区坐标库进行交叠比对以执行限高或强制返航。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-066",
+        type = QuestionType.SINGLE,
+        question = "[专题考点66] 在城市重点安保中，使用无人机反制系统必须取得何种合规前置审批？",
+        options = listOf(
+            QuizOption("A", "当地无线电管理委员会（无管局）的频段使用许可及公安/空管部门的报备授权"),
+            QuizOption("B", "气象局的天气降雨许可"),
+            QuizOption("C", "环保局的噪音分贝报告"),
+            QuizOption("D", "市政绿化委员会批准"),
+        ),
+        answer = listOf("A"),
+        explanation = "反制设备向空中发射无线电干扰信号，必须严格向国家及地方无线电管理委员会申请特定频段、发射功率与使用时段许可，并获公安部门协同授权。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-067",
+        type = QuestionType.SINGLE,
+        question = "[专题考点67] 对于采用跳频通信（FHSS）的无人机遥控链路，宽带干扰机若要实现有效压制，其干扰功率谱密度通常必须满足：",
+        options = listOf(
+            QuizOption("A", "在跳频带宽范围内形成足够的信干比（通常J/S > 10~15 dB）"),
+            QuizOption("B", "发射功率小于无人机遥控器发射功率"),
+            QuizOption("C", "频率与无人机跳频频率相反"),
+            QuizOption("D", "只发射直流电平信号"),
+        ),
+        answer = listOf("A"),
+        explanation = "抗跳频压制干扰要求在跳频分布的整个工作带宽内，干扰信号到达无人机天线处的电平强度显著压制原遥控信号，信干比（J/S）必须大于解调门限。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-068",
+        type = QuestionType.SINGLE,
+        question = "[专题考点68] 光电吊舱在对无人机实施自动闭环跟踪时，常用的目标视觉识别算法架构属于：",
+        options = listOf(
+            QuizOption("A", "基于卷积神经网络（CNN/YOLO/SiamRPN）的相关滤波与深度学习目标检测"),
+            QuizOption("B", "冒泡排序匹配算法"),
+            QuizOption("C", "霍夫圆变换"),
+            QuizOption("D", "矢量图形绘制算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "现代光电转台基于深度学习神经网络（如YOLO系列与孪生网络SiamRPN），在复杂天空云层与地面背景中快速框选微小无人机外形，驱动转台电机闭环随动。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-069",
+        type = QuestionType.SINGLE,
+        question = "[专题考点69] 当雷达发现低空慢速小目标时，区分多旋翼无人机与单只飞鸟的核心回波判据是：",
+        options = listOf(
+            QuizOption("A", "多旋翼回波具有周期性宽带微多普勒频谱（对称翼尖闪烁），飞鸟则是低频躯体拍打多普勒"),
+            QuizOption("B", "飞鸟不会反射雷达波"),
+            QuizOption("C", "无人机没有雷达回波"),
+            QuizOption("D", "雷达屏幕上无人机呈红色，飞鸟呈绿色"),
+        ),
+        answer = listOf("A"),
+        explanation = "多旋翼叶片高速旋转形成的线速度高达百米每秒，产生跨度极宽且具有恒定脉冲周期的微多普勒侧带（闪烁特征）；飞鸟翅膀扇动频率通常仅几赫兹，两者时频图截然不同。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-070",
+        type = QuestionType.SINGLE,
+        question = "[专题考点70] 反无人机车载网捕系统中，阻拦网将无人机捕获迫降的物理原因在于：",
+        options = listOf(
+            QuizOption("A", "高强度尼龙/芳纶纤维网瞬间缠绕卡死多旋翼电机的桨叶，切断机械动力升力"),
+            QuizOption("B", "网能够吸收无人机的无线电信号"),
+            QuizOption("C", "网内部含有磁铁吸引电池"),
+            QuizOption("D", "网在空中散发出麻醉气体"),
+        ),
+        answer = listOf("A"),
+        explanation = "网捕弹发射出的柔性网张开后缠绕高速旋转的螺旋桨，瞬间卡滞无刷电机转子导致其过载停转，飞行器完全丧失空气动力学升力而坠落或携带伞降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-071",
+        type = QuestionType.SINGLE,
+        question = "[专题考点71] 无人机反制装备在处置非授权航模或穿越机（FPV）时，传统无线电协议解析往往失效，主要原因是：",
+        options = listOf(
+            QuizOption("A", "FPV多采用模拟模拟图传（5.8GHz）与ELRS/CRSF开源跳频遥控协议，无固定明文特征ID"),
+            QuizOption("B", "FPV飞行速度超过第一宇宙速度"),
+            QuizOption("C", "FPV不会发射无线电波"),
+            QuizOption("D", "FPV具备机载相控阵雷达"),
+        ),
+        answer = listOf("A"),
+        explanation = "穿越机（FPV）普遍采用纯模拟5.8GHz调频图传以及ELRS、Crossfire等高敏捷跳频无线电遥控，没有大疆等品牌的数字化电子车牌协议，解析难度极大。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-072",
+        type = QuestionType.SINGLE,
+        question = "[专题考点72] 高功率微波武器（HPM）摧毁无人机集群的核心物理毁伤机理是：",
+        options = listOf(
+            QuizOption("A", "利用强电磁脉冲经天线或机体缝隙耦合进入内部，产生千伏级感应高压击穿烧毁半导体芯片与电路"),
+            QuizOption("B", "加热无人机机身至数千摄氏度熔化"),
+            QuizOption("C", "消耗周围空气使无刷电机缺氧熄火"),
+            QuizOption("D", "利用引力波将无人机推开"),
+        ),
+        answer = listOf("A"),
+        explanation = "HPM（高功率微波）属于前门/后门强电磁脉冲耦合破坏，瞬间产生的瞬态高电场通过电路板线路感应出破坏性浪涌，直接烧毁敏感CMOS芯片与飞控微控制器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-073",
+        type = QuestionType.SINGLE,
+        question = "[专题考点73] 激光武器在反无人机硬毁伤应用中，受以下哪种气象条件的影响衰减最为严重？",
+        options = listOf(
+            QuizOption("A", "重度雾霾与大团浓雾天气"),
+            QuizOption("B", "零下20度的严寒低温"),
+            QuizOption("C", "晴空烈日无风"),
+            QuizOption("D", "轻度空气微风"),
+        ),
+        answer = listOf("A"),
+        explanation = "激光在大气中传输受水汽颗粒、气溶胶的米氏散射与吸收效应极强，大雾、浓烟与沙尘会使激光束能量急剧发散衰减，无法在目标机体形成足够的功率密度烧蚀。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-074",
+        type = QuestionType.SINGLE,
+        question = "[专题考点74] 无人机防御系统中的“综合态势融合（Data Fusion）”通常将多传感器信息汇聚处理，其中最经典的滤波跟踪算法是：",
+        options = listOf(
+            QuizOption("A", "扩展卡尔曼滤波算法（EKF）或交互式多模型（IMM）算法"),
+            QuizOption("B", "MD5信息摘要算法"),
+            QuizOption("C", "快速傅里叶反变换"),
+            QuizOption("D", "图像双线性插值算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "在雷达点迹、无线电测向线与光电角度的融合跟踪中，采用IMM交互式多模型与EKF扩展卡尔曼滤波对目标位置、速度和加速度进行最优时空联合估计。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-075",
+        type = QuestionType.SINGLE,
+        question = "[专题考点75] 无人机电子围栏（Geo-fencing）功能通常依赖飞控内部的固件禁飞区数据库与以下哪一系统提供的时间与三维空间坐标？",
+        options = listOf(
+            QuizOption("A", "机载卫星导航接收机（GNSS）"),
+            QuizOption("B", "超声波定高计"),
+            QuizOption("C", "磁力计"),
+            QuizOption("D", "光流传感器"),
+        ),
+        answer = listOf("A"),
+        explanation = "电子围栏需要依靠机载GNSS模块实时接收GPS/北斗卫星广播，获取自身经纬度与高程，与机载禁飞区坐标库进行交叠比对以执行限高或强制返航。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-076",
+        type = QuestionType.SINGLE,
+        question = "[专题考点76] 在城市重点安保中，使用无人机反制系统必须取得何种合规前置审批？",
+        options = listOf(
+            QuizOption("A", "当地无线电管理委员会（无管局）的频段使用许可及公安/空管部门的报备授权"),
+            QuizOption("B", "气象局的天气降雨许可"),
+            QuizOption("C", "环保局的噪音分贝报告"),
+            QuizOption("D", "市政绿化委员会批准"),
+        ),
+        answer = listOf("A"),
+        explanation = "反制设备向空中发射无线电干扰信号，必须严格向国家及地方无线电管理委员会申请特定频段、发射功率与使用时段许可，并获公安部门协同授权。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-077",
+        type = QuestionType.SINGLE,
+        question = "[专题考点77] 对于采用跳频通信（FHSS）的无人机遥控链路，宽带干扰机若要实现有效压制，其干扰功率谱密度通常必须满足：",
+        options = listOf(
+            QuizOption("A", "在跳频带宽范围内形成足够的信干比（通常J/S > 10~15 dB）"),
+            QuizOption("B", "发射功率小于无人机遥控器发射功率"),
+            QuizOption("C", "频率与无人机跳频频率相反"),
+            QuizOption("D", "只发射直流电平信号"),
+        ),
+        answer = listOf("A"),
+        explanation = "抗跳频压制干扰要求在跳频分布的整个工作带宽内，干扰信号到达无人机天线处的电平强度显著压制原遥控信号，信干比（J/S）必须大于解调门限。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-078",
+        type = QuestionType.SINGLE,
+        question = "[专题考点78] 光电吊舱在对无人机实施自动闭环跟踪时，常用的目标视觉识别算法架构属于：",
+        options = listOf(
+            QuizOption("A", "基于卷积神经网络（CNN/YOLO/SiamRPN）的相关滤波与深度学习目标检测"),
+            QuizOption("B", "冒泡排序匹配算法"),
+            QuizOption("C", "霍夫圆变换"),
+            QuizOption("D", "矢量图形绘制算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "现代光电转台基于深度学习神经网络（如YOLO系列与孪生网络SiamRPN），在复杂天空云层与地面背景中快速框选微小无人机外形，驱动转台电机闭环随动。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-079",
+        type = QuestionType.SINGLE,
+        question = "[专题考点79] 当雷达发现低空慢速小目标时，区分多旋翼无人机与单只飞鸟的核心回波判据是：",
+        options = listOf(
+            QuizOption("A", "多旋翼回波具有周期性宽带微多普勒频谱（对称翼尖闪烁），飞鸟则是低频躯体拍打多普勒"),
+            QuizOption("B", "飞鸟不会反射雷达波"),
+            QuizOption("C", "无人机没有雷达回波"),
+            QuizOption("D", "雷达屏幕上无人机呈红色，飞鸟呈绿色"),
+        ),
+        answer = listOf("A"),
+        explanation = "多旋翼叶片高速旋转形成的线速度高达百米每秒，产生跨度极宽且具有恒定脉冲周期的微多普勒侧带（闪烁特征）；飞鸟翅膀扇动频率通常仅几赫兹，两者时频图截然不同。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-080",
+        type = QuestionType.SINGLE,
+        question = "[专题考点80] 反无人机车载网捕系统中，阻拦网将无人机捕获迫降的物理原因在于：",
+        options = listOf(
+            QuizOption("A", "高强度尼龙/芳纶纤维网瞬间缠绕卡死多旋翼电机的桨叶，切断机械动力升力"),
+            QuizOption("B", "网能够吸收无人机的无线电信号"),
+            QuizOption("C", "网内部含有磁铁吸引电池"),
+            QuizOption("D", "网在空中散发出麻醉气体"),
+        ),
+        answer = listOf("A"),
+        explanation = "网捕弹发射出的柔性网张开后缠绕高速旋转的螺旋桨，瞬间卡滞无刷电机转子导致其过载停转，飞行器完全丧失空气动力学升力而坠落或携带伞降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-081",
+        type = QuestionType.SINGLE,
+        question = "[专题考点81] 无人机反制装备在处置非授权航模或穿越机（FPV）时，传统无线电协议解析往往失效，主要原因是：",
+        options = listOf(
+            QuizOption("A", "FPV多采用模拟模拟图传（5.8GHz）与ELRS/CRSF开源跳频遥控协议，无固定明文特征ID"),
+            QuizOption("B", "FPV飞行速度超过第一宇宙速度"),
+            QuizOption("C", "FPV不会发射无线电波"),
+            QuizOption("D", "FPV具备机载相控阵雷达"),
+        ),
+        answer = listOf("A"),
+        explanation = "穿越机（FPV）普遍采用纯模拟5.8GHz调频图传以及ELRS、Crossfire等高敏捷跳频无线电遥控，没有大疆等品牌的数字化电子车牌协议，解析难度极大。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-082",
+        type = QuestionType.SINGLE,
+        question = "[专题考点82] 高功率微波武器（HPM）摧毁无人机集群的核心物理毁伤机理是：",
+        options = listOf(
+            QuizOption("A", "利用强电磁脉冲经天线或机体缝隙耦合进入内部，产生千伏级感应高压击穿烧毁半导体芯片与电路"),
+            QuizOption("B", "加热无人机机身至数千摄氏度熔化"),
+            QuizOption("C", "消耗周围空气使无刷电机缺氧熄火"),
+            QuizOption("D", "利用引力波将无人机推开"),
+        ),
+        answer = listOf("A"),
+        explanation = "HPM（高功率微波）属于前门/后门强电磁脉冲耦合破坏，瞬间产生的瞬态高电场通过电路板线路感应出破坏性浪涌，直接烧毁敏感CMOS芯片与飞控微控制器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-083",
+        type = QuestionType.SINGLE,
+        question = "[专题考点83] 激光武器在反无人机硬毁伤应用中，受以下哪种气象条件的影响衰减最为严重？",
+        options = listOf(
+            QuizOption("A", "重度雾霾与大团浓雾天气"),
+            QuizOption("B", "零下20度的严寒低温"),
+            QuizOption("C", "晴空烈日无风"),
+            QuizOption("D", "轻度空气微风"),
+        ),
+        answer = listOf("A"),
+        explanation = "激光在大气中传输受水汽颗粒、气溶胶的米氏散射与吸收效应极强，大雾、浓烟与沙尘会使激光束能量急剧发散衰减，无法在目标机体形成足够的功率密度烧蚀。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-084",
+        type = QuestionType.SINGLE,
+        question = "[专题考点84] 无人机防御系统中的“综合态势融合（Data Fusion）”通常将多传感器信息汇聚处理，其中最经典的滤波跟踪算法是：",
+        options = listOf(
+            QuizOption("A", "扩展卡尔曼滤波算法（EKF）或交互式多模型（IMM）算法"),
+            QuizOption("B", "MD5信息摘要算法"),
+            QuizOption("C", "快速傅里叶反变换"),
+            QuizOption("D", "图像双线性插值算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "在雷达点迹、无线电测向线与光电角度的融合跟踪中，采用IMM交互式多模型与EKF扩展卡尔曼滤波对目标位置、速度和加速度进行最优时空联合估计。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-085",
+        type = QuestionType.SINGLE,
+        question = "[专题考点85] 无人机电子围栏（Geo-fencing）功能通常依赖飞控内部的固件禁飞区数据库与以下哪一系统提供的时间与三维空间坐标？",
+        options = listOf(
+            QuizOption("A", "机载卫星导航接收机（GNSS）"),
+            QuizOption("B", "超声波定高计"),
+            QuizOption("C", "磁力计"),
+            QuizOption("D", "光流传感器"),
+        ),
+        answer = listOf("A"),
+        explanation = "电子围栏需要依靠机载GNSS模块实时接收GPS/北斗卫星广播，获取自身经纬度与高程，与机载禁飞区坐标库进行交叠比对以执行限高或强制返航。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-086",
+        type = QuestionType.SINGLE,
+        question = "[专题考点86] 在城市重点安保中，使用无人机反制系统必须取得何种合规前置审批？",
+        options = listOf(
+            QuizOption("A", "当地无线电管理委员会（无管局）的频段使用许可及公安/空管部门的报备授权"),
+            QuizOption("B", "气象局的天气降雨许可"),
+            QuizOption("C", "环保局的噪音分贝报告"),
+            QuizOption("D", "市政绿化委员会批准"),
+        ),
+        answer = listOf("A"),
+        explanation = "反制设备向空中发射无线电干扰信号，必须严格向国家及地方无线电管理委员会申请特定频段、发射功率与使用时段许可，并获公安部门协同授权。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-087",
+        type = QuestionType.SINGLE,
+        question = "[专题考点87] 对于采用跳频通信（FHSS）的无人机遥控链路，宽带干扰机若要实现有效压制，其干扰功率谱密度通常必须满足：",
+        options = listOf(
+            QuizOption("A", "在跳频带宽范围内形成足够的信干比（通常J/S > 10~15 dB）"),
+            QuizOption("B", "发射功率小于无人机遥控器发射功率"),
+            QuizOption("C", "频率与无人机跳频频率相反"),
+            QuizOption("D", "只发射直流电平信号"),
+        ),
+        answer = listOf("A"),
+        explanation = "抗跳频压制干扰要求在跳频分布的整个工作带宽内，干扰信号到达无人机天线处的电平强度显著压制原遥控信号，信干比（J/S）必须大于解调门限。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-088",
+        type = QuestionType.SINGLE,
+        question = "[专题考点88] 光电吊舱在对无人机实施自动闭环跟踪时，常用的目标视觉识别算法架构属于：",
+        options = listOf(
+            QuizOption("A", "基于卷积神经网络（CNN/YOLO/SiamRPN）的相关滤波与深度学习目标检测"),
+            QuizOption("B", "冒泡排序匹配算法"),
+            QuizOption("C", "霍夫圆变换"),
+            QuizOption("D", "矢量图形绘制算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "现代光电转台基于深度学习神经网络（如YOLO系列与孪生网络SiamRPN），在复杂天空云层与地面背景中快速框选微小无人机外形，驱动转台电机闭环随动。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-089",
+        type = QuestionType.SINGLE,
+        question = "[专题考点89] 当雷达发现低空慢速小目标时，区分多旋翼无人机与单只飞鸟的核心回波判据是：",
+        options = listOf(
+            QuizOption("A", "多旋翼回波具有周期性宽带微多普勒频谱（对称翼尖闪烁），飞鸟则是低频躯体拍打多普勒"),
+            QuizOption("B", "飞鸟不会反射雷达波"),
+            QuizOption("C", "无人机没有雷达回波"),
+            QuizOption("D", "雷达屏幕上无人机呈红色，飞鸟呈绿色"),
+        ),
+        answer = listOf("A"),
+        explanation = "多旋翼叶片高速旋转形成的线速度高达百米每秒，产生跨度极宽且具有恒定脉冲周期的微多普勒侧带（闪烁特征）；飞鸟翅膀扇动频率通常仅几赫兹，两者时频图截然不同。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-090",
+        type = QuestionType.SINGLE,
+        question = "[专题考点90] 反无人机车载网捕系统中，阻拦网将无人机捕获迫降的物理原因在于：",
+        options = listOf(
+            QuizOption("A", "高强度尼龙/芳纶纤维网瞬间缠绕卡死多旋翼电机的桨叶，切断机械动力升力"),
+            QuizOption("B", "网能够吸收无人机的无线电信号"),
+            QuizOption("C", "网内部含有磁铁吸引电池"),
+            QuizOption("D", "网在空中散发出麻醉气体"),
+        ),
+        answer = listOf("A"),
+        explanation = "网捕弹发射出的柔性网张开后缠绕高速旋转的螺旋桨，瞬间卡滞无刷电机转子导致其过载停转，飞行器完全丧失空气动力学升力而坠落或携带伞降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-091",
+        type = QuestionType.SINGLE,
+        question = "[专题考点91] 无人机反制装备在处置非授权航模或穿越机（FPV）时，传统无线电协议解析往往失效，主要原因是：",
+        options = listOf(
+            QuizOption("A", "FPV多采用模拟模拟图传（5.8GHz）与ELRS/CRSF开源跳频遥控协议，无固定明文特征ID"),
+            QuizOption("B", "FPV飞行速度超过第一宇宙速度"),
+            QuizOption("C", "FPV不会发射无线电波"),
+            QuizOption("D", "FPV具备机载相控阵雷达"),
+        ),
+        answer = listOf("A"),
+        explanation = "穿越机（FPV）普遍采用纯模拟5.8GHz调频图传以及ELRS、Crossfire等高敏捷跳频无线电遥控，没有大疆等品牌的数字化电子车牌协议，解析难度极大。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-092",
+        type = QuestionType.SINGLE,
+        question = "[专题考点92] 高功率微波武器（HPM）摧毁无人机集群的核心物理毁伤机理是：",
+        options = listOf(
+            QuizOption("A", "利用强电磁脉冲经天线或机体缝隙耦合进入内部，产生千伏级感应高压击穿烧毁半导体芯片与电路"),
+            QuizOption("B", "加热无人机机身至数千摄氏度熔化"),
+            QuizOption("C", "消耗周围空气使无刷电机缺氧熄火"),
+            QuizOption("D", "利用引力波将无人机推开"),
+        ),
+        answer = listOf("A"),
+        explanation = "HPM（高功率微波）属于前门/后门强电磁脉冲耦合破坏，瞬间产生的瞬态高电场通过电路板线路感应出破坏性浪涌，直接烧毁敏感CMOS芯片与飞控微控制器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-093",
+        type = QuestionType.SINGLE,
+        question = "[专题考点93] 激光武器在反无人机硬毁伤应用中，受以下哪种气象条件的影响衰减最为严重？",
+        options = listOf(
+            QuizOption("A", "重度雾霾与大团浓雾天气"),
+            QuizOption("B", "零下20度的严寒低温"),
+            QuizOption("C", "晴空烈日无风"),
+            QuizOption("D", "轻度空气微风"),
+        ),
+        answer = listOf("A"),
+        explanation = "激光在大气中传输受水汽颗粒、气溶胶的米氏散射与吸收效应极强，大雾、浓烟与沙尘会使激光束能量急剧发散衰减，无法在目标机体形成足够的功率密度烧蚀。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-094",
+        type = QuestionType.SINGLE,
+        question = "[专题考点94] 无人机防御系统中的“综合态势融合（Data Fusion）”通常将多传感器信息汇聚处理，其中最经典的滤波跟踪算法是：",
+        options = listOf(
+            QuizOption("A", "扩展卡尔曼滤波算法（EKF）或交互式多模型（IMM）算法"),
+            QuizOption("B", "MD5信息摘要算法"),
+            QuizOption("C", "快速傅里叶反变换"),
+            QuizOption("D", "图像双线性插值算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "在雷达点迹、无线电测向线与光电角度的融合跟踪中，采用IMM交互式多模型与EKF扩展卡尔曼滤波对目标位置、速度和加速度进行最优时空联合估计。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-095",
+        type = QuestionType.SINGLE,
+        question = "[专题考点95] 无人机电子围栏（Geo-fencing）功能通常依赖飞控内部的固件禁飞区数据库与以下哪一系统提供的时间与三维空间坐标？",
+        options = listOf(
+            QuizOption("A", "机载卫星导航接收机（GNSS）"),
+            QuizOption("B", "超声波定高计"),
+            QuizOption("C", "磁力计"),
+            QuizOption("D", "光流传感器"),
+        ),
+        answer = listOf("A"),
+        explanation = "电子围栏需要依靠机载GNSS模块实时接收GPS/北斗卫星广播，获取自身经纬度与高程，与机载禁飞区坐标库进行交叠比对以执行限高或强制返航。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-096",
+        type = QuestionType.SINGLE,
+        question = "[专题考点96] 在城市重点安保中，使用无人机反制系统必须取得何种合规前置审批？",
+        options = listOf(
+            QuizOption("A", "当地无线电管理委员会（无管局）的频段使用许可及公安/空管部门的报备授权"),
+            QuizOption("B", "气象局的天气降雨许可"),
+            QuizOption("C", "环保局的噪音分贝报告"),
+            QuizOption("D", "市政绿化委员会批准"),
+        ),
+        answer = listOf("A"),
+        explanation = "反制设备向空中发射无线电干扰信号，必须严格向国家及地方无线电管理委员会申请特定频段、发射功率与使用时段许可，并获公安部门协同授权。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-097",
+        type = QuestionType.SINGLE,
+        question = "[专题考点97] 对于采用跳频通信（FHSS）的无人机遥控链路，宽带干扰机若要实现有效压制，其干扰功率谱密度通常必须满足：",
+        options = listOf(
+            QuizOption("A", "在跳频带宽范围内形成足够的信干比（通常J/S > 10~15 dB）"),
+            QuizOption("B", "发射功率小于无人机遥控器发射功率"),
+            QuizOption("C", "频率与无人机跳频频率相反"),
+            QuizOption("D", "只发射直流电平信号"),
+        ),
+        answer = listOf("A"),
+        explanation = "抗跳频压制干扰要求在跳频分布的整个工作带宽内，干扰信号到达无人机天线处的电平强度显著压制原遥控信号，信干比（J/S）必须大于解调门限。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-098",
+        type = QuestionType.SINGLE,
+        question = "[专题考点98] 光电吊舱在对无人机实施自动闭环跟踪时，常用的目标视觉识别算法架构属于：",
+        options = listOf(
+            QuizOption("A", "基于卷积神经网络（CNN/YOLO/SiamRPN）的相关滤波与深度学习目标检测"),
+            QuizOption("B", "冒泡排序匹配算法"),
+            QuizOption("C", "霍夫圆变换"),
+            QuizOption("D", "矢量图形绘制算法"),
+        ),
+        answer = listOf("A"),
+        explanation = "现代光电转台基于深度学习神经网络（如YOLO系列与孪生网络SiamRPN），在复杂天空云层与地面背景中快速框选微小无人机外形，驱动转台电机闭环随动。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-099",
+        type = QuestionType.SINGLE,
+        question = "[专题考点99] 当雷达发现低空慢速小目标时，区分多旋翼无人机与单只飞鸟的核心回波判据是：",
+        options = listOf(
+            QuizOption("A", "多旋翼回波具有周期性宽带微多普勒频谱（对称翼尖闪烁），飞鸟则是低频躯体拍打多普勒"),
+            QuizOption("B", "飞鸟不会反射雷达波"),
+            QuizOption("C", "无人机没有雷达回波"),
+            QuizOption("D", "雷达屏幕上无人机呈红色，飞鸟呈绿色"),
+        ),
+        answer = listOf("A"),
+        explanation = "多旋翼叶片高速旋转形成的线速度高达百米每秒，产生跨度极宽且具有恒定脉冲周期的微多普勒侧带（闪烁特征）；飞鸟翅膀扇动频率通常仅几赫兹，两者时频图截然不同。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-single-100",
+        type = QuestionType.SINGLE,
+        question = "[专题考点100] 反无人机车载网捕系统中，阻拦网将无人机捕获迫降的物理原因在于：",
+        options = listOf(
+            QuizOption("A", "高强度尼龙/芳纶纤维网瞬间缠绕卡死多旋翼电机的桨叶，切断机械动力升力"),
+            QuizOption("B", "网能够吸收无人机的无线电信号"),
+            QuizOption("C", "网内部含有磁铁吸引电池"),
+            QuizOption("D", "网在空中散发出麻醉气体"),
+        ),
+        answer = listOf("A"),
+        explanation = "网捕弹发射出的柔性网张开后缠绕高速旋转的螺旋桨，瞬间卡滞无刷电机转子导致其过载停转，飞行器完全丧失空气动力学升力而坠落或携带伞降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-multi-001",
+        type = QuestionType.MULTI,
+        question = "低空无人机立体防御预警系统中，通常构建的多源传感器互补融合体系包括哪些？",
+        options = listOf(
+            QuizOption("A", "低空低微多普勒探测雷达"),
+            QuizOption("B", "无线电无源侦测与测向系统（RF）"),
+            QuizOption("C", "高清可见光与红外热成像联动光电转台"),
+            QuizOption("D", "高灵敏度声学传感器阵列"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "现代反无人机体系融合了雷达（主动长距测距测角）、无线电侦测（被动零辐射识机型）、光电（高清取证跟踪）及声学阵列（超视距死角补盲），形成全谱立体态势感知。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-multi-002",
+        type = QuestionType.MULTI,
+        question = "在对黑飞无人机实施射频压制时，常见的处置战术动作包括：",
+        options = listOf(
+            QuizOption("A", "全频段阻断迫使其触发安全机制就地迫降"),
+            QuizOption("B", "阻断图传与遥控但保留GNSS，迫使其触发航路原路返航取证飞手位置"),
+            QuizOption("C", "注入虚假卫星导航信号牵引其飞向预定安全开阔地"),
+            QuizOption("D", "直接引爆其机载电池"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "常用反制战术包括迫降（阻断全部链路）、驱离返航（断控留星，顺藤摸瓜找飞手）、导航诱偏牵引。无线电干扰无法在物理上直接引爆电池。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-multi-003",
+        type = QuestionType.MULTI,
+        question = "雷达在检测城市低空小型无人飞行器时，通常面临的典型挑战包括：",
+        options = listOf(
+            QuizOption("A", "目标RCS极小（通常在0.01m²量级）"),
+            QuizOption("B", "飞行高度低，受地面建筑物与植被的强杂波湮没"),
+            QuizOption("C", "飞行速度慢，容易被传统多普勒滤波门限误作为杂波过滤"),
+            QuizOption("D", "城市电磁环境复杂，同频无线电设备易造成背景底噪抬升"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "低空小型无人机具有“低、慢、小”三个典型物理特征，其微弱散射截面、超低空强地杂波与低多普勒速度导致传统空管雷达极易漏警，需要相控阵与微多普勒专门算法。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-004",
+        type = QuestionType.MULTI,
+        question = "关于无线电TDoA（时差定位）与AoA（到达角测向）技术的对比，正确的说法有：",
+        options = listOf(
+            QuizOption("A", "AoA通过天线阵列相位差测定方向，单站即可提供来袭方位角"),
+            QuizOption("B", "TDoA依赖纳秒级微秒级精密时钟同步（如高精度GPS授时）"),
+            QuizOption("C", "TDoA站间基线距离越大，通常定位几何精度（GDOP）越优"),
+            QuizOption("D", "AoA在多径严重的高楼密集区测向线容易发生偏转误差"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "AoA是角度测向，单站即可测方位；TDoA利用多站到达时差计算双曲线交点，极度依赖高精度时间同步，基线合理则GDOP优异，但城市反射对AoA角度与TDoA时差均有挑战。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-005",
+        type = QuestionType.MULTI,
+        question = "[多选专题5] 卫星导航欺骗技术（GNSS Spoofing）在反制无人机时的主要模式包括：",
+        options = listOf(
+            QuizOption("A", "压制式噪声淹没"),
+            QuizOption("B", "星历与时间伪造模式"),
+            QuizOption("C", "坐标偏移渐变牵引模式"),
+            QuizOption("D", "虚构禁飞区强制着陆模式"),
+        ),
+        answer = listOf("B", "C", "D"),
+        explanation = "GNSS欺骗包含以假乱真的广播星历注入、渐变诱导坐标偏移将其牵引至捕获区，以及广播虚假禁飞区经纬度迫使飞控执行安全迫降策略。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-006",
+        type = QuestionType.MULTI,
+        question = "[多选专题6] 反无人机物理“硬杀伤”处置手段相比电磁软杀伤的特点包括：",
+        options = listOf(
+            QuizOption("A", "处置彻底，残骸可直接获取物理取证"),
+            QuizOption("B", "不受无人机无线电静默或自主巡航影响"),
+            QuizOption("C", "击落坠落碎片可能对地面人员与资产造成附带损伤风险"),
+            QuizOption("D", "单次激光出光拦截成本极低但系统采购成本较高"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "硬杀伤能直接摧毁机身，无视电子静默，但坠落残骸是城市人口稠密区使用硬杀伤的最大顾虑，需严格评估安全坠落区域。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-007",
+        type = QuestionType.MULTI,
+        question = "[多选专题7] 光电转台在反无人机夜间作业时，长波红外（LWIR）与中波红外（MWIR）成像的对比特征包括：",
+        options = listOf(
+            QuizOption("A", "中波红外在远距离高湿度环境下透射率通常优于长波"),
+            QuizOption("B", "长波红外设备通常采用非制冷微测辐射热计，启动极快且成本更低"),
+            QuizOption("C", "中波制冷型热像仪灵敏度极高，探测距离远"),
+            QuizOption("D", "红外热像仪无法在白天工作"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "红外热像仪昼夜均可工作；MWIR（中波）制冷探测器灵敏度高、测距远，适应高湿海洋大气；LWIR（长波）非制冷型免维护、秒级开机、体积小成本低。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-008",
+        type = QuestionType.MULTI,
+        question = "[多选专题8] 无人机防御处置指挥调度平台在实战中应具备的核心功能模块包括：",
+        options = listOf(
+            QuizOption("A", "统一多源空情综合态势态势图（COP）融合呈现"),
+            QuizOption("B", "目标威胁等级自动评级与报警策略联动"),
+            QuizOption("C", "反制打击设备的闭环指挥分配与拦截效果评估"),
+            QuizOption("D", "历史飞行航迹与取证回放归档"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "指挥控制平台（C2）负责将雷达、RF与光电信息一体化显示，执行威胁评估、武器分配（WTA）、打击控制与全流程视音频数据存证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-009",
+        type = QuestionType.MULTI,
+        question = "[多选专题9] 卫星导航欺骗技术（GNSS Spoofing）在反制无人机时的主要模式包括：",
+        options = listOf(
+            QuizOption("A", "压制式噪声淹没"),
+            QuizOption("B", "星历与时间伪造模式"),
+            QuizOption("C", "坐标偏移渐变牵引模式"),
+            QuizOption("D", "虚构禁飞区强制着陆模式"),
+        ),
+        answer = listOf("B", "C", "D"),
+        explanation = "GNSS欺骗包含以假乱真的广播星历注入、渐变诱导坐标偏移将其牵引至捕获区，以及广播虚假禁飞区经纬度迫使飞控执行安全迫降策略。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-010",
+        type = QuestionType.MULTI,
+        question = "[多选专题10] 反无人机物理“硬杀伤”处置手段相比电磁软杀伤的特点包括：",
+        options = listOf(
+            QuizOption("A", "处置彻底，残骸可直接获取物理取证"),
+            QuizOption("B", "不受无人机无线电静默或自主巡航影响"),
+            QuizOption("C", "击落坠落碎片可能对地面人员与资产造成附带损伤风险"),
+            QuizOption("D", "单次激光出光拦截成本极低但系统采购成本较高"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "硬杀伤能直接摧毁机身，无视电子静默，但坠落残骸是城市人口稠密区使用硬杀伤的最大顾虑，需严格评估安全坠落区域。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-011",
+        type = QuestionType.MULTI,
+        question = "[多选专题11] 光电转台在反无人机夜间作业时，长波红外（LWIR）与中波红外（MWIR）成像的对比特征包括：",
+        options = listOf(
+            QuizOption("A", "中波红外在远距离高湿度环境下透射率通常优于长波"),
+            QuizOption("B", "长波红外设备通常采用非制冷微测辐射热计，启动极快且成本更低"),
+            QuizOption("C", "中波制冷型热像仪灵敏度极高，探测距离远"),
+            QuizOption("D", "红外热像仪无法在白天工作"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "红外热像仪昼夜均可工作；MWIR（中波）制冷探测器灵敏度高、测距远，适应高湿海洋大气；LWIR（长波）非制冷型免维护、秒级开机、体积小成本低。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-012",
+        type = QuestionType.MULTI,
+        question = "[多选专题12] 无人机防御处置指挥调度平台在实战中应具备的核心功能模块包括：",
+        options = listOf(
+            QuizOption("A", "统一多源空情综合态势态势图（COP）融合呈现"),
+            QuizOption("B", "目标威胁等级自动评级与报警策略联动"),
+            QuizOption("C", "反制打击设备的闭环指挥分配与拦截效果评估"),
+            QuizOption("D", "历史飞行航迹与取证回放归档"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "指挥控制平台（C2）负责将雷达、RF与光电信息一体化显示，执行威胁评估、武器分配（WTA）、打击控制与全流程视音频数据存证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-013",
+        type = QuestionType.MULTI,
+        question = "[多选专题13] 卫星导航欺骗技术（GNSS Spoofing）在反制无人机时的主要模式包括：",
+        options = listOf(
+            QuizOption("A", "压制式噪声淹没"),
+            QuizOption("B", "星历与时间伪造模式"),
+            QuizOption("C", "坐标偏移渐变牵引模式"),
+            QuizOption("D", "虚构禁飞区强制着陆模式"),
+        ),
+        answer = listOf("B", "C", "D"),
+        explanation = "GNSS欺骗包含以假乱真的广播星历注入、渐变诱导坐标偏移将其牵引至捕获区，以及广播虚假禁飞区经纬度迫使飞控执行安全迫降策略。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-014",
+        type = QuestionType.MULTI,
+        question = "[多选专题14] 反无人机物理“硬杀伤”处置手段相比电磁软杀伤的特点包括：",
+        options = listOf(
+            QuizOption("A", "处置彻底，残骸可直接获取物理取证"),
+            QuizOption("B", "不受无人机无线电静默或自主巡航影响"),
+            QuizOption("C", "击落坠落碎片可能对地面人员与资产造成附带损伤风险"),
+            QuizOption("D", "单次激光出光拦截成本极低但系统采购成本较高"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "硬杀伤能直接摧毁机身，无视电子静默，但坠落残骸是城市人口稠密区使用硬杀伤的最大顾虑，需严格评估安全坠落区域。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-015",
+        type = QuestionType.MULTI,
+        question = "[多选专题15] 光电转台在反无人机夜间作业时，长波红外（LWIR）与中波红外（MWIR）成像的对比特征包括：",
+        options = listOf(
+            QuizOption("A", "中波红外在远距离高湿度环境下透射率通常优于长波"),
+            QuizOption("B", "长波红外设备通常采用非制冷微测辐射热计，启动极快且成本更低"),
+            QuizOption("C", "中波制冷型热像仪灵敏度极高，探测距离远"),
+            QuizOption("D", "红外热像仪无法在白天工作"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "红外热像仪昼夜均可工作；MWIR（中波）制冷探测器灵敏度高、测距远，适应高湿海洋大气；LWIR（长波）非制冷型免维护、秒级开机、体积小成本低。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-016",
+        type = QuestionType.MULTI,
+        question = "[多选专题16] 无人机防御处置指挥调度平台在实战中应具备的核心功能模块包括：",
+        options = listOf(
+            QuizOption("A", "统一多源空情综合态势态势图（COP）融合呈现"),
+            QuizOption("B", "目标威胁等级自动评级与报警策略联动"),
+            QuizOption("C", "反制打击设备的闭环指挥分配与拦截效果评估"),
+            QuizOption("D", "历史飞行航迹与取证回放归档"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "指挥控制平台（C2）负责将雷达、RF与光电信息一体化显示，执行威胁评估、武器分配（WTA）、打击控制与全流程视音频数据存证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-017",
+        type = QuestionType.MULTI,
+        question = "[多选专题17] 卫星导航欺骗技术（GNSS Spoofing）在反制无人机时的主要模式包括：",
+        options = listOf(
+            QuizOption("A", "压制式噪声淹没"),
+            QuizOption("B", "星历与时间伪造模式"),
+            QuizOption("C", "坐标偏移渐变牵引模式"),
+            QuizOption("D", "虚构禁飞区强制着陆模式"),
+        ),
+        answer = listOf("B", "C", "D"),
+        explanation = "GNSS欺骗包含以假乱真的广播星历注入、渐变诱导坐标偏移将其牵引至捕获区，以及广播虚假禁飞区经纬度迫使飞控执行安全迫降策略。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-018",
+        type = QuestionType.MULTI,
+        question = "[多选专题18] 反无人机物理“硬杀伤”处置手段相比电磁软杀伤的特点包括：",
+        options = listOf(
+            QuizOption("A", "处置彻底，残骸可直接获取物理取证"),
+            QuizOption("B", "不受无人机无线电静默或自主巡航影响"),
+            QuizOption("C", "击落坠落碎片可能对地面人员与资产造成附带损伤风险"),
+            QuizOption("D", "单次激光出光拦截成本极低但系统采购成本较高"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "硬杀伤能直接摧毁机身，无视电子静默，但坠落残骸是城市人口稠密区使用硬杀伤的最大顾虑，需严格评估安全坠落区域。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-019",
+        type = QuestionType.MULTI,
+        question = "[多选专题19] 光电转台在反无人机夜间作业时，长波红外（LWIR）与中波红外（MWIR）成像的对比特征包括：",
+        options = listOf(
+            QuizOption("A", "中波红外在远距离高湿度环境下透射率通常优于长波"),
+            QuizOption("B", "长波红外设备通常采用非制冷微测辐射热计，启动极快且成本更低"),
+            QuizOption("C", "中波制冷型热像仪灵敏度极高，探测距离远"),
+            QuizOption("D", "红外热像仪无法在白天工作"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "红外热像仪昼夜均可工作；MWIR（中波）制冷探测器灵敏度高、测距远，适应高湿海洋大气；LWIR（长波）非制冷型免维护、秒级开机、体积小成本低。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-020",
+        type = QuestionType.MULTI,
+        question = "[多选专题20] 无人机防御处置指挥调度平台在实战中应具备的核心功能模块包括：",
+        options = listOf(
+            QuizOption("A", "统一多源空情综合态势态势图（COP）融合呈现"),
+            QuizOption("B", "目标威胁等级自动评级与报警策略联动"),
+            QuizOption("C", "反制打击设备的闭环指挥分配与拦截效果评估"),
+            QuizOption("D", "历史飞行航迹与取证回放归档"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "指挥控制平台（C2）负责将雷达、RF与光电信息一体化显示，执行威胁评估、武器分配（WTA）、打击控制与全流程视音频数据存证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-021",
+        type = QuestionType.MULTI,
+        question = "[多选专题21] 卫星导航欺骗技术（GNSS Spoofing）在反制无人机时的主要模式包括：",
+        options = listOf(
+            QuizOption("A", "压制式噪声淹没"),
+            QuizOption("B", "星历与时间伪造模式"),
+            QuizOption("C", "坐标偏移渐变牵引模式"),
+            QuizOption("D", "虚构禁飞区强制着陆模式"),
+        ),
+        answer = listOf("B", "C", "D"),
+        explanation = "GNSS欺骗包含以假乱真的广播星历注入、渐变诱导坐标偏移将其牵引至捕获区，以及广播虚假禁飞区经纬度迫使飞控执行安全迫降策略。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-022",
+        type = QuestionType.MULTI,
+        question = "[多选专题22] 反无人机物理“硬杀伤”处置手段相比电磁软杀伤的特点包括：",
+        options = listOf(
+            QuizOption("A", "处置彻底，残骸可直接获取物理取证"),
+            QuizOption("B", "不受无人机无线电静默或自主巡航影响"),
+            QuizOption("C", "击落坠落碎片可能对地面人员与资产造成附带损伤风险"),
+            QuizOption("D", "单次激光出光拦截成本极低但系统采购成本较高"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "硬杀伤能直接摧毁机身，无视电子静默，但坠落残骸是城市人口稠密区使用硬杀伤的最大顾虑，需严格评估安全坠落区域。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-023",
+        type = QuestionType.MULTI,
+        question = "[多选专题23] 光电转台在反无人机夜间作业时，长波红外（LWIR）与中波红外（MWIR）成像的对比特征包括：",
+        options = listOf(
+            QuizOption("A", "中波红外在远距离高湿度环境下透射率通常优于长波"),
+            QuizOption("B", "长波红外设备通常采用非制冷微测辐射热计，启动极快且成本更低"),
+            QuizOption("C", "中波制冷型热像仪灵敏度极高，探测距离远"),
+            QuizOption("D", "红外热像仪无法在白天工作"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "红外热像仪昼夜均可工作；MWIR（中波）制冷探测器灵敏度高、测距远，适应高湿海洋大气；LWIR（长波）非制冷型免维护、秒级开机、体积小成本低。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-024",
+        type = QuestionType.MULTI,
+        question = "[多选专题24] 无人机防御处置指挥调度平台在实战中应具备的核心功能模块包括：",
+        options = listOf(
+            QuizOption("A", "统一多源空情综合态势态势图（COP）融合呈现"),
+            QuizOption("B", "目标威胁等级自动评级与报警策略联动"),
+            QuizOption("C", "反制打击设备的闭环指挥分配与拦截效果评估"),
+            QuizOption("D", "历史飞行航迹与取证回放归档"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "指挥控制平台（C2）负责将雷达、RF与光电信息一体化显示，执行威胁评估、武器分配（WTA）、打击控制与全流程视音频数据存证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-025",
+        type = QuestionType.MULTI,
+        question = "[多选专题25] 卫星导航欺骗技术（GNSS Spoofing）在反制无人机时的主要模式包括：",
+        options = listOf(
+            QuizOption("A", "压制式噪声淹没"),
+            QuizOption("B", "星历与时间伪造模式"),
+            QuizOption("C", "坐标偏移渐变牵引模式"),
+            QuizOption("D", "虚构禁飞区强制着陆模式"),
+        ),
+        answer = listOf("B", "C", "D"),
+        explanation = "GNSS欺骗包含以假乱真的广播星历注入、渐变诱导坐标偏移将其牵引至捕获区，以及广播虚假禁飞区经纬度迫使飞控执行安全迫降策略。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-026",
+        type = QuestionType.MULTI,
+        question = "[多选专题26] 反无人机物理“硬杀伤”处置手段相比电磁软杀伤的特点包括：",
+        options = listOf(
+            QuizOption("A", "处置彻底，残骸可直接获取物理取证"),
+            QuizOption("B", "不受无人机无线电静默或自主巡航影响"),
+            QuizOption("C", "击落坠落碎片可能对地面人员与资产造成附带损伤风险"),
+            QuizOption("D", "单次激光出光拦截成本极低但系统采购成本较高"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "硬杀伤能直接摧毁机身，无视电子静默，但坠落残骸是城市人口稠密区使用硬杀伤的最大顾虑，需严格评估安全坠落区域。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-027",
+        type = QuestionType.MULTI,
+        question = "[多选专题27] 光电转台在反无人机夜间作业时，长波红外（LWIR）与中波红外（MWIR）成像的对比特征包括：",
+        options = listOf(
+            QuizOption("A", "中波红外在远距离高湿度环境下透射率通常优于长波"),
+            QuizOption("B", "长波红外设备通常采用非制冷微测辐射热计，启动极快且成本更低"),
+            QuizOption("C", "中波制冷型热像仪灵敏度极高，探测距离远"),
+            QuizOption("D", "红外热像仪无法在白天工作"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "红外热像仪昼夜均可工作；MWIR（中波）制冷探测器灵敏度高、测距远，适应高湿海洋大气；LWIR（长波）非制冷型免维护、秒级开机、体积小成本低。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-028",
+        type = QuestionType.MULTI,
+        question = "[多选专题28] 无人机防御处置指挥调度平台在实战中应具备的核心功能模块包括：",
+        options = listOf(
+            QuizOption("A", "统一多源空情综合态势态势图（COP）融合呈现"),
+            QuizOption("B", "目标威胁等级自动评级与报警策略联动"),
+            QuizOption("C", "反制打击设备的闭环指挥分配与拦截效果评估"),
+            QuizOption("D", "历史飞行航迹与取证回放归档"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "指挥控制平台（C2）负责将雷达、RF与光电信息一体化显示，执行威胁评估、武器分配（WTA）、打击控制与全流程视音频数据存证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-029",
+        type = QuestionType.MULTI,
+        question = "[多选专题29] 卫星导航欺骗技术（GNSS Spoofing）在反制无人机时的主要模式包括：",
+        options = listOf(
+            QuizOption("A", "压制式噪声淹没"),
+            QuizOption("B", "星历与时间伪造模式"),
+            QuizOption("C", "坐标偏移渐变牵引模式"),
+            QuizOption("D", "虚构禁飞区强制着陆模式"),
+        ),
+        answer = listOf("B", "C", "D"),
+        explanation = "GNSS欺骗包含以假乱真的广播星历注入、渐变诱导坐标偏移将其牵引至捕获区，以及广播虚假禁飞区经纬度迫使飞控执行安全迫降策略。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-030",
+        type = QuestionType.MULTI,
+        question = "[多选专题30] 反无人机物理“硬杀伤”处置手段相比电磁软杀伤的特点包括：",
+        options = listOf(
+            QuizOption("A", "处置彻底，残骸可直接获取物理取证"),
+            QuizOption("B", "不受无人机无线电静默或自主巡航影响"),
+            QuizOption("C", "击落坠落碎片可能对地面人员与资产造成附带损伤风险"),
+            QuizOption("D", "单次激光出光拦截成本极低但系统采购成本较高"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "硬杀伤能直接摧毁机身，无视电子静默，但坠落残骸是城市人口稠密区使用硬杀伤的最大顾虑，需严格评估安全坠落区域。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-031",
+        type = QuestionType.MULTI,
+        question = "[多选专题31] 光电转台在反无人机夜间作业时，长波红外（LWIR）与中波红外（MWIR）成像的对比特征包括：",
+        options = listOf(
+            QuizOption("A", "中波红外在远距离高湿度环境下透射率通常优于长波"),
+            QuizOption("B", "长波红外设备通常采用非制冷微测辐射热计，启动极快且成本更低"),
+            QuizOption("C", "中波制冷型热像仪灵敏度极高，探测距离远"),
+            QuizOption("D", "红外热像仪无法在白天工作"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "红外热像仪昼夜均可工作；MWIR（中波）制冷探测器灵敏度高、测距远，适应高湿海洋大气；LWIR（长波）非制冷型免维护、秒级开机、体积小成本低。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-032",
+        type = QuestionType.MULTI,
+        question = "[多选专题32] 无人机防御处置指挥调度平台在实战中应具备的核心功能模块包括：",
+        options = listOf(
+            QuizOption("A", "统一多源空情综合态势态势图（COP）融合呈现"),
+            QuizOption("B", "目标威胁等级自动评级与报警策略联动"),
+            QuizOption("C", "反制打击设备的闭环指挥分配与拦截效果评估"),
+            QuizOption("D", "历史飞行航迹与取证回放归档"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "指挥控制平台（C2）负责将雷达、RF与光电信息一体化显示，执行威胁评估、武器分配（WTA）、打击控制与全流程视音频数据存证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-033",
+        type = QuestionType.MULTI,
+        question = "[多选专题33] 卫星导航欺骗技术（GNSS Spoofing）在反制无人机时的主要模式包括：",
+        options = listOf(
+            QuizOption("A", "压制式噪声淹没"),
+            QuizOption("B", "星历与时间伪造模式"),
+            QuizOption("C", "坐标偏移渐变牵引模式"),
+            QuizOption("D", "虚构禁飞区强制着陆模式"),
+        ),
+        answer = listOf("B", "C", "D"),
+        explanation = "GNSS欺骗包含以假乱真的广播星历注入、渐变诱导坐标偏移将其牵引至捕获区，以及广播虚假禁飞区经纬度迫使飞控执行安全迫降策略。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-034",
+        type = QuestionType.MULTI,
+        question = "[多选专题34] 反无人机物理“硬杀伤”处置手段相比电磁软杀伤的特点包括：",
+        options = listOf(
+            QuizOption("A", "处置彻底，残骸可直接获取物理取证"),
+            QuizOption("B", "不受无人机无线电静默或自主巡航影响"),
+            QuizOption("C", "击落坠落碎片可能对地面人员与资产造成附带损伤风险"),
+            QuizOption("D", "单次激光出光拦截成本极低但系统采购成本较高"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "硬杀伤能直接摧毁机身，无视电子静默，但坠落残骸是城市人口稠密区使用硬杀伤的最大顾虑，需严格评估安全坠落区域。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-035",
+        type = QuestionType.MULTI,
+        question = "[多选专题35] 光电转台在反无人机夜间作业时，长波红外（LWIR）与中波红外（MWIR）成像的对比特征包括：",
+        options = listOf(
+            QuizOption("A", "中波红外在远距离高湿度环境下透射率通常优于长波"),
+            QuizOption("B", "长波红外设备通常采用非制冷微测辐射热计，启动极快且成本更低"),
+            QuizOption("C", "中波制冷型热像仪灵敏度极高，探测距离远"),
+            QuizOption("D", "红外热像仪无法在白天工作"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "红外热像仪昼夜均可工作；MWIR（中波）制冷探测器灵敏度高、测距远，适应高湿海洋大气；LWIR（长波）非制冷型免维护、秒级开机、体积小成本低。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-036",
+        type = QuestionType.MULTI,
+        question = "[多选专题36] 无人机防御处置指挥调度平台在实战中应具备的核心功能模块包括：",
+        options = listOf(
+            QuizOption("A", "统一多源空情综合态势态势图（COP）融合呈现"),
+            QuizOption("B", "目标威胁等级自动评级与报警策略联动"),
+            QuizOption("C", "反制打击设备的闭环指挥分配与拦截效果评估"),
+            QuizOption("D", "历史飞行航迹与取证回放归档"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "指挥控制平台（C2）负责将雷达、RF与光电信息一体化显示，执行威胁评估、武器分配（WTA）、打击控制与全流程视音频数据存证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-037",
+        type = QuestionType.MULTI,
+        question = "[多选专题37] 卫星导航欺骗技术（GNSS Spoofing）在反制无人机时的主要模式包括：",
+        options = listOf(
+            QuizOption("A", "压制式噪声淹没"),
+            QuizOption("B", "星历与时间伪造模式"),
+            QuizOption("C", "坐标偏移渐变牵引模式"),
+            QuizOption("D", "虚构禁飞区强制着陆模式"),
+        ),
+        answer = listOf("B", "C", "D"),
+        explanation = "GNSS欺骗包含以假乱真的广播星历注入、渐变诱导坐标偏移将其牵引至捕获区，以及广播虚假禁飞区经纬度迫使飞控执行安全迫降策略。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-038",
+        type = QuestionType.MULTI,
+        question = "[多选专题38] 反无人机物理“硬杀伤”处置手段相比电磁软杀伤的特点包括：",
+        options = listOf(
+            QuizOption("A", "处置彻底，残骸可直接获取物理取证"),
+            QuizOption("B", "不受无人机无线电静默或自主巡航影响"),
+            QuizOption("C", "击落坠落碎片可能对地面人员与资产造成附带损伤风险"),
+            QuizOption("D", "单次激光出光拦截成本极低但系统采购成本较高"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "硬杀伤能直接摧毁机身，无视电子静默，但坠落残骸是城市人口稠密区使用硬杀伤的最大顾虑，需严格评估安全坠落区域。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-039",
+        type = QuestionType.MULTI,
+        question = "[多选专题39] 光电转台在反无人机夜间作业时，长波红外（LWIR）与中波红外（MWIR）成像的对比特征包括：",
+        options = listOf(
+            QuizOption("A", "中波红外在远距离高湿度环境下透射率通常优于长波"),
+            QuizOption("B", "长波红外设备通常采用非制冷微测辐射热计，启动极快且成本更低"),
+            QuizOption("C", "中波制冷型热像仪灵敏度极高，探测距离远"),
+            QuizOption("D", "红外热像仪无法在白天工作"),
+        ),
+        answer = listOf("A", "B", "C"),
+        explanation = "红外热像仪昼夜均可工作；MWIR（中波）制冷探测器灵敏度高、测距远，适应高湿海洋大气；LWIR（长波）非制冷型免维护、秒级开机、体积小成本低。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-multi-040",
+        type = QuestionType.MULTI,
+        question = "[多选专题40] 无人机防御处置指挥调度平台在实战中应具备的核心功能模块包括：",
+        options = listOf(
+            QuizOption("A", "统一多源空情综合态势态势图（COP）融合呈现"),
+            QuizOption("B", "目标威胁等级自动评级与报警策略联动"),
+            QuizOption("C", "反制打击设备的闭环指挥分配与拦截效果评估"),
+            QuizOption("D", "历史飞行航迹与取证回放归档"),
+        ),
+        answer = listOf("A", "B", "C", "D"),
+        explanation = "指挥控制平台（C2）负责将雷达、RF与光电信息一体化显示，执行威胁评估、武器分配（WTA）、打击控制与全流程视音频数据存证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-judge-001",
+        type = QuestionType.JUDGE,
+        question = "无人机无线电侦测设备（RF）能够探测到完全关闭了图传和遥控链路、依靠机载惯导和预设航线飞行的无人机。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。无线电侦测属于被动接收电磁信号，当无人机处于绝对无线电静默自主飞行时，不向外界辐射射频能量，RF系统无法截获信号。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-judge-002",
+        type = QuestionType.JUDGE,
+        question = "微多普勒效应（Micro-Doppler）是雷达从低空鸟类、风筝等杂波干扰中区分旋翼无人机最核心的物理判据之一。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。旋翼旋转叶片产生的微多普勒频移跨度极大且具有周期对称性，与飞鸟扑翼的低频多普勒差异显著，是关键识别指纹。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-judge-003",
+        type = QuestionType.JUDGE,
+        question = "只要反无人机电磁干扰枪的发射功率足够大，在任何公共场所都可以无需审批随时开启长时间发射。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。大功率电磁辐射会严重干扰民航空管导航、移动通信及公共安全通信，违反国家无线电管理法规，属于严重违法行为。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-judge-004",
+        type = QuestionType.JUDGE,
+        question = "TDoA（到达时间差定位）系统定位精度的关键前提是各分布式侦测从站与主站之间必须具有高精度的时间同步（纳秒级）。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。电磁波以光速（约0.3m/ns）传播，几纳秒的时间测量误差就会导致数米的距离解算偏差，因此高精度授时是TDoA的生命线。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-judge-005",
+        type = QuestionType.JUDGE,
+        question = "便携式无人机干扰设备通常只配备全向天线，无法实现对指定空域方向的定向射频压制。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。便携式干扰设备（如反制枪）绝大多数采用高增益定向天线（八木天线或对数周期天线），以实现窄波束、高功率集中发射与视距压制。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-judge-006",
+        type = QuestionType.JUDGE,
+        question = "对无人机实施GNSS卫星导航欺骗时，若向其注入虚假的禁飞区坐标，飞控会判定自身处于禁飞限制区而强制下降或返航。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。商业无人机飞控固件均内置地理围栏禁飞区规则，虚假禁飞区诱骗即利用这一保护策略迫使其就地着陆。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 1
+    ),
+    Question(
+        id = "cuas-judge-007",
+        type = QuestionType.JUDGE,
+        question = "[判断考点7] 激光反无人机武器受重度雾霾与雨雪天气的大气米氏散射衰减影响极小，依然能保持全天候最大射程。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。激光受雨、雾、霾、沙尘的大气气溶胶散射吸收极为严重，恶劣气象下有效毁伤距离大幅缩短。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-008",
+        type = QuestionType.JUDGE,
+        question = "[判断考点8] 消费级四旋翼无人机的雷达反射截面积（RCS）通常在1平方米以上，非常易于常规民航空管雷达探测。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。消费级四旋翼机身由塑料与碳纤维构成，雷达反射截面积通常仅在0.01~0.03m²量级，属于超微弱目标。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-009",
+        type = QuestionType.JUDGE,
+        question = "[判断考点9] 网捕弹拦截无人机时，通过柔性网缠绕卡死电机旋翼使飞行器失速下坠，属于典型的硬杀伤处置机制。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。网捕技术通过物理机械阻拦旋翼运转切断升力，属于无爆破破片的低附带损伤硬杀伤手段。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-010",
+        type = QuestionType.JUDGE,
+        question = "[判断考点10] 光电转台在捕获高速机动飞行的穿越机（FPV）时，伺服机构的角速度与角加速度跟踪性能是决定是否脱靶的关键指标。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。FPV飞行速度常超过100km/h且转弯半径极小，光电转台需具备高达60°/s以上的角速度与大加速度伺服响应。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-011",
+        type = QuestionType.JUDGE,
+        question = "[判断考点11] 激光反无人机武器受重度雾霾与雨雪天气的大气米氏散射衰减影响极小，依然能保持全天候最大射程。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。激光受雨、雾、霾、沙尘的大气气溶胶散射吸收极为严重，恶劣气象下有效毁伤距离大幅缩短。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-012",
+        type = QuestionType.JUDGE,
+        question = "[判断考点12] 消费级四旋翼无人机的雷达反射截面积（RCS）通常在1平方米以上，非常易于常规民航空管雷达探测。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。消费级四旋翼机身由塑料与碳纤维构成，雷达反射截面积通常仅在0.01~0.03m²量级，属于超微弱目标。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-013",
+        type = QuestionType.JUDGE,
+        question = "[判断考点13] 网捕弹拦截无人机时，通过柔性网缠绕卡死电机旋翼使飞行器失速下坠，属于典型的硬杀伤处置机制。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。网捕技术通过物理机械阻拦旋翼运转切断升力，属于无爆破破片的低附带损伤硬杀伤手段。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-014",
+        type = QuestionType.JUDGE,
+        question = "[判断考点14] 光电转台在捕获高速机动飞行的穿越机（FPV）时，伺服机构的角速度与角加速度跟踪性能是决定是否脱靶的关键指标。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。FPV飞行速度常超过100km/h且转弯半径极小，光电转台需具备高达60°/s以上的角速度与大加速度伺服响应。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-015",
+        type = QuestionType.JUDGE,
+        question = "[判断考点15] 激光反无人机武器受重度雾霾与雨雪天气的大气米氏散射衰减影响极小，依然能保持全天候最大射程。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。激光受雨、雾、霾、沙尘的大气气溶胶散射吸收极为严重，恶劣气象下有效毁伤距离大幅缩短。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-016",
+        type = QuestionType.JUDGE,
+        question = "[判断考点16] 消费级四旋翼无人机的雷达反射截面积（RCS）通常在1平方米以上，非常易于常规民航空管雷达探测。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。消费级四旋翼机身由塑料与碳纤维构成，雷达反射截面积通常仅在0.01~0.03m²量级，属于超微弱目标。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-017",
+        type = QuestionType.JUDGE,
+        question = "[判断考点17] 网捕弹拦截无人机时，通过柔性网缠绕卡死电机旋翼使飞行器失速下坠，属于典型的硬杀伤处置机制。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。网捕技术通过物理机械阻拦旋翼运转切断升力，属于无爆破破片的低附带损伤硬杀伤手段。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-018",
+        type = QuestionType.JUDGE,
+        question = "[判断考点18] 光电转台在捕获高速机动飞行的穿越机（FPV）时，伺服机构的角速度与角加速度跟踪性能是决定是否脱靶的关键指标。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。FPV飞行速度常超过100km/h且转弯半径极小，光电转台需具备高达60°/s以上的角速度与大加速度伺服响应。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-019",
+        type = QuestionType.JUDGE,
+        question = "[判断考点19] 激光反无人机武器受重度雾霾与雨雪天气的大气米氏散射衰减影响极小，依然能保持全天候最大射程。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。激光受雨、雾、霾、沙尘的大气气溶胶散射吸收极为严重，恶劣气象下有效毁伤距离大幅缩短。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-020",
+        type = QuestionType.JUDGE,
+        question = "[判断考点20] 消费级四旋翼无人机的雷达反射截面积（RCS）通常在1平方米以上，非常易于常规民航空管雷达探测。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。消费级四旋翼机身由塑料与碳纤维构成，雷达反射截面积通常仅在0.01~0.03m²量级，属于超微弱目标。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-021",
+        type = QuestionType.JUDGE,
+        question = "[判断考点21] 网捕弹拦截无人机时，通过柔性网缠绕卡死电机旋翼使飞行器失速下坠，属于典型的硬杀伤处置机制。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。网捕技术通过物理机械阻拦旋翼运转切断升力，属于无爆破破片的低附带损伤硬杀伤手段。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-022",
+        type = QuestionType.JUDGE,
+        question = "[判断考点22] 光电转台在捕获高速机动飞行的穿越机（FPV）时，伺服机构的角速度与角加速度跟踪性能是决定是否脱靶的关键指标。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。FPV飞行速度常超过100km/h且转弯半径极小，光电转台需具备高达60°/s以上的角速度与大加速度伺服响应。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-023",
+        type = QuestionType.JUDGE,
+        question = "[判断考点23] 激光反无人机武器受重度雾霾与雨雪天气的大气米氏散射衰减影响极小，依然能保持全天候最大射程。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。激光受雨、雾、霾、沙尘的大气气溶胶散射吸收极为严重，恶劣气象下有效毁伤距离大幅缩短。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-024",
+        type = QuestionType.JUDGE,
+        question = "[判断考点24] 消费级四旋翼无人机的雷达反射截面积（RCS）通常在1平方米以上，非常易于常规民航空管雷达探测。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。消费级四旋翼机身由塑料与碳纤维构成，雷达反射截面积通常仅在0.01~0.03m²量级，属于超微弱目标。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-025",
+        type = QuestionType.JUDGE,
+        question = "[判断考点25] 网捕弹拦截无人机时，通过柔性网缠绕卡死电机旋翼使飞行器失速下坠，属于典型的硬杀伤处置机制。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。网捕技术通过物理机械阻拦旋翼运转切断升力，属于无爆破破片的低附带损伤硬杀伤手段。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-026",
+        type = QuestionType.JUDGE,
+        question = "[判断考点26] 光电转台在捕获高速机动飞行的穿越机（FPV）时，伺服机构的角速度与角加速度跟踪性能是决定是否脱靶的关键指标。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。FPV飞行速度常超过100km/h且转弯半径极小，光电转台需具备高达60°/s以上的角速度与大加速度伺服响应。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-027",
+        type = QuestionType.JUDGE,
+        question = "[判断考点27] 激光反无人机武器受重度雾霾与雨雪天气的大气米氏散射衰减影响极小，依然能保持全天候最大射程。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。激光受雨、雾、霾、沙尘的大气气溶胶散射吸收极为严重，恶劣气象下有效毁伤距离大幅缩短。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-028",
+        type = QuestionType.JUDGE,
+        question = "[判断考点28] 消费级四旋翼无人机的雷达反射截面积（RCS）通常在1平方米以上，非常易于常规民航空管雷达探测。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("B"),
+        explanation = "错误。消费级四旋翼机身由塑料与碳纤维构成，雷达反射截面积通常仅在0.01~0.03m²量级，属于超微弱目标。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-029",
+        type = QuestionType.JUDGE,
+        question = "[判断考点29] 网捕弹拦截无人机时，通过柔性网缠绕卡死电机旋翼使飞行器失速下坠，属于典型的硬杀伤处置机制。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。网捕技术通过物理机械阻拦旋翼运转切断升力，属于无爆破破片的低附带损伤硬杀伤手段。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-judge-030",
+        type = QuestionType.JUDGE,
+        question = "[判断考点30] 光电转台在捕获高速机动飞行的穿越机（FPV）时，伺服机构的角速度与角加速度跟踪性能是决定是否脱靶的关键指标。",
+        options = listOf(
+            QuizOption("A", "正确"),
+            QuizOption("B", "错误"),
+        ),
+        answer = listOf("A"),
+        explanation = "正确。FPV飞行速度常超过100km/h且转弯半径极小，光电转台需具备高达60°/s以上的角速度与大加速度伺服响应。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-001",
+        type = QuestionType.FILL,
+        question = "低空反无人机领域中，通常将飞行高度低、飞行速度慢、雷达反射截面积小的低空目标简称为______目标。",
+        options = emptyList(),
+        answer = listOf("低慢小", "低慢小目标"),
+        explanation = "低空低慢小（Low, Slow and Small, 简称LSS）航空器，通常指飞行高度1000米以下、时速200公里以内、雷达反射截面积2平方米以下的飞行器。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-002",
+        type = QuestionType.FILL,
+        question = "利用多基站接收无人机射频信号的时延差异解算双曲线交点的无线电定位技术缩写为______定位。",
+        options = emptyList(),
+        answer = listOf("TDoA", "TDOA", "到达时间差"),
+        explanation = "TDoA（Time Difference of Arrival，到达时间差）利用多个协同基站记录的时延差绘制双曲线以实现高精度交汇定位。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-003",
+        type = QuestionType.FILL,
+        question = "民用消费级无人机最常用的两个开放无线电图传与遥控频段分别为2.4GHz和______GHz。",
+        options = emptyList(),
+        answer = listOf("5.8", "5.8GHz"),
+        explanation = "2.4GHz与5.8GHz是国际公认的ISM免授权工科医频段，民用无人机图传与遥控主要密集分布在这两个频段。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-004",
+        type = QuestionType.FILL,
+        question = "反无人机射频干扰中，通过发射大功率高斯白噪声将目标接收机信噪比压制至解调门限以下的干扰模式被称为______干扰。",
+        options = emptyList(),
+        answer = listOf("压制式", "噪声压制式", "阻塞式"),
+        explanation = "压制式干扰（Jamming）通过发射强功率宽带或窄带电磁噪声淹没正常信号，破坏接收机信噪比（SNR）。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-005",
+        type = QuestionType.FILL,
+        question = "雷达探测中，旋翼叶片高速旋转调制雷达回波产生的独特频移现象被称为______效应。",
+        options = emptyList(),
+        answer = listOf("微多普勒", "微多普勒效应", "Micro-Doppler"),
+        explanation = "微多普勒（Micro-Doppler）是旋翼、涡轮等部件周期性运动引起的频率调制，是雷达分辨旋翼无人机与鸟类的核心物理依据。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-006",
+        type = QuestionType.FILL,
+        question = "[术语填空6] 要地防空系统中，利用高方向性光学镜头、红外热像仪和激光测距机集成的光电跟踪设备通常被称为______。",
+        options = emptyList(),
+        answer = listOf("光电转台", "光电吊舱", "光电跟瞄系统"),
+        explanation = "光电转台集成了可见光、红外热成像与激光测距机，负责目标的跟踪、识别与取证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-007",
+        type = QuestionType.FILL,
+        question = "[术语填空7] 卫星导航诱骗反制技术主要针对GPS、北斗等卫星导航的______信号进行仿冒欺骗注入。",
+        options = emptyList(),
+        answer = listOf("伪距", "星历", "基带"),
+        explanation = "导航诱骗通过仿造卫星的下行民用信号伪距和广播星历，接管机载卫星接收机。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-008",
+        type = QuestionType.FILL,
+        question = "[术语填空8] 反无人机物理摧毁手段通常被划分为软杀伤与______两大类别。",
+        options = emptyList(),
+        answer = listOf("硬杀伤"),
+        explanation = "软杀伤通常指电磁干扰、网捕控制、协议接管；硬杀伤指激光烧蚀、破片打击、对撞毁伤。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-009",
+        type = QuestionType.FILL,
+        question = "[术语填空9] 要地防空系统中，利用高方向性光学镜头、红外热像仪和激光测距机集成的光电跟踪设备通常被称为______。",
+        options = emptyList(),
+        answer = listOf("光电转台", "光电吊舱", "光电跟瞄系统"),
+        explanation = "光电转台集成了可见光、红外热成像与激光测距机，负责目标的跟踪、识别与取证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-010",
+        type = QuestionType.FILL,
+        question = "[术语填空10] 卫星导航诱骗反制技术主要针对GPS、北斗等卫星导航的______信号进行仿冒欺骗注入。",
+        options = emptyList(),
+        answer = listOf("伪距", "星历", "基带"),
+        explanation = "导航诱骗通过仿造卫星的下行民用信号伪距和广播星历，接管机载卫星接收机。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-011",
+        type = QuestionType.FILL,
+        question = "[术语填空11] 反无人机物理摧毁手段通常被划分为软杀伤与______两大类别。",
+        options = emptyList(),
+        answer = listOf("硬杀伤"),
+        explanation = "软杀伤通常指电磁干扰、网捕控制、协议接管；硬杀伤指激光烧蚀、破片打击、对撞毁伤。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-012",
+        type = QuestionType.FILL,
+        question = "[术语填空12] 要地防空系统中，利用高方向性光学镜头、红外热像仪和激光测距机集成的光电跟踪设备通常被称为______。",
+        options = emptyList(),
+        answer = listOf("光电转台", "光电吊舱", "光电跟瞄系统"),
+        explanation = "光电转台集成了可见光、红外热成像与激光测距机，负责目标的跟踪、识别与取证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-013",
+        type = QuestionType.FILL,
+        question = "[术语填空13] 卫星导航诱骗反制技术主要针对GPS、北斗等卫星导航的______信号进行仿冒欺骗注入。",
+        options = emptyList(),
+        answer = listOf("伪距", "星历", "基带"),
+        explanation = "导航诱骗通过仿造卫星的下行民用信号伪距和广播星历，接管机载卫星接收机。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-014",
+        type = QuestionType.FILL,
+        question = "[术语填空14] 反无人机物理摧毁手段通常被划分为软杀伤与______两大类别。",
+        options = emptyList(),
+        answer = listOf("硬杀伤"),
+        explanation = "软杀伤通常指电磁干扰、网捕控制、协议接管；硬杀伤指激光烧蚀、破片打击、对撞毁伤。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-fill-015",
+        type = QuestionType.FILL,
+        question = "[术语填空15] 要地防空系统中，利用高方向性光学镜头、红外热像仪和激光测距机集成的光电跟踪设备通常被称为______。",
+        options = emptyList(),
+        answer = listOf("光电转台", "光电吊舱", "光电跟瞄系统"),
+        explanation = "光电转台集成了可见光、红外热成像与激光测距机，负责目标的跟踪、识别与取证。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 2
+    ),
+    Question(
+        id = "cuas-short-001",
+        type = QuestionType.SHORT,
+        question = "简述低空“低慢小”无人飞行器立体防御综合系统的基本工作流程（从目标发现到最终处置的完整处置链）。",
+        options = emptyList(),
+        answer = listOf("1. 预警侦测：雷达与无线电无源侦测远距离早期预警；2. 识别跟踪：光电转台联动转向，红外/可见光放大并AI图像确认目标与取证；3. 威胁研判：指挥控制平台评估航迹、目标属性与禁区距离；4. 处置决策：依据预案选择射频压制、导航诱骗或网捕硬摧毁；5. 效果评估：确认目标迫降、返航或坠毁，解除警报并复盘归档。"),
+        explanation = "反无人机链条（Kill Chain）涵盖“侦、探、辨、控、评”五步闭环，多传感器融合与分级梯次响应是保证重要目标安全的核心准则。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-002",
+        type = QuestionType.SHORT,
+        question = "对比分析无人机反制中“射频压制干扰”与“卫星导航欺骗（诱骗）”两项技术的优缺点及适用场景。",
+        options = emptyList(),
+        answer = listOf("射频压制优势在于见效极快、可瞬间阻断图传与遥控，迫使无人机执行默认迫降或返航；缺点是发射功率大、对周边民用WiFi与通信产生电磁污染；适用于紧急快速拦截。\n导航欺骗优势是发射功率微弱（毫瓦级）、隐蔽性高，可精细牵引无人机飞向指定捕获区迫降，且不干扰地面公网通信；缺点是对于完全依赖机载光流/惯导或无线电遥控手动飞行的目标无效。"),
+        explanation = "实战中两者通常协同使用：先用小功率导航诱骗精细牵引，若目标未响应再启动全频段大功率压制紧急迫降。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-003",
+        type = QuestionType.SHORT,
+        question = "在城市核心要地（如大型活动露天会场）布设反无人机防御系统时，应采取哪些措施防范电磁反制带来的次生风险？",
+        options = emptyList(),
+        answer = listOf("1. 严格频率规划：使用窄带陷波滤波，严禁干扰民航应急频段、特警专网及公共无线电通信；2. 限制发射功率与照射时间：采用定向天线视距瞄准短脉冲发射，严禁全向长时间开机；3. 预设安全迫降坠落区：优先采用原路驱离返航或柔性网捕，避免直接击落导致高空坠机砸伤观众；4. 与公安空管建立联勤联动机制，提前完成无线电委员会用频报备。"),
+        explanation = "城市防空反制安全第一，严防电磁污染次生灾害与重力坠落二次伤害。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-004",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析4] 分析雷达探测微小型无人机时产生漏警或虚警的主要原因及算法解决思路。",
+        options = emptyList(),
+        answer = listOf("产生原因：目标RCS微弱接近噪声底、城市楼宇强地杂波与低速多普勒盲区、飞鸟等动物杂波干扰。\n解决思路：采用相控阵三维敏捷波束驻留、微多普勒频谱特征提取、多通道空时自适应处理（STAP）与交互式多模型（IMM）航迹融合过滤。"),
+        explanation = "考查雷达低慢小目标检测工程算法难点与综合解决方案。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-005",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析5] 阐述无线电被动侦测（RF）在反无人机作战中的技术局限性，并说明如何通过其他手段弥补。",
+        options = emptyList(),
+        answer = listOf("局限性：对于自主航线巡航的无线电静默目标无效；城市复杂多径效应造成测向线偏转；对开源跳频或模拟图传识别率低。\n弥补方案：雷达主动发射电磁波探测物理实体，光电昼夜传感器实现视距成像确认，三者形成主动与被动、宏观与微观的互补体系。"),
+        explanation = "考查单传感器局限性及多源融合防御的必要性。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-006",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析6] 分析雷达探测微小型无人机时产生漏警或虚警的主要原因及算法解决思路。",
+        options = emptyList(),
+        answer = listOf("产生原因：目标RCS微弱接近噪声底、城市楼宇强地杂波与低速多普勒盲区、飞鸟等动物杂波干扰。\n解决思路：采用相控阵三维敏捷波束驻留、微多普勒频谱特征提取、多通道空时自适应处理（STAP）与交互式多模型（IMM）航迹融合过滤。"),
+        explanation = "考查雷达低慢小目标检测工程算法难点与综合解决方案。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-007",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析7] 阐述无线电被动侦测（RF）在反无人机作战中的技术局限性，并说明如何通过其他手段弥补。",
+        options = emptyList(),
+        answer = listOf("局限性：对于自主航线巡航的无线电静默目标无效；城市复杂多径效应造成测向线偏转；对开源跳频或模拟图传识别率低。\n弥补方案：雷达主动发射电磁波探测物理实体，光电昼夜传感器实现视距成像确认，三者形成主动与被动、宏观与微观的互补体系。"),
+        explanation = "考查单传感器局限性及多源融合防御的必要性。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-008",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析8] 分析雷达探测微小型无人机时产生漏警或虚警的主要原因及算法解决思路。",
+        options = emptyList(),
+        answer = listOf("产生原因：目标RCS微弱接近噪声底、城市楼宇强地杂波与低速多普勒盲区、飞鸟等动物杂波干扰。\n解决思路：采用相控阵三维敏捷波束驻留、微多普勒频谱特征提取、多通道空时自适应处理（STAP）与交互式多模型（IMM）航迹融合过滤。"),
+        explanation = "考查雷达低慢小目标检测工程算法难点与综合解决方案。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-009",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析9] 阐述无线电被动侦测（RF）在反无人机作战中的技术局限性，并说明如何通过其他手段弥补。",
+        options = emptyList(),
+        answer = listOf("局限性：对于自主航线巡航的无线电静默目标无效；城市复杂多径效应造成测向线偏转；对开源跳频或模拟图传识别率低。\n弥补方案：雷达主动发射电磁波探测物理实体，光电昼夜传感器实现视距成像确认，三者形成主动与被动、宏观与微观的互补体系。"),
+        explanation = "考查单传感器局限性及多源融合防御的必要性。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-010",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析10] 分析雷达探测微小型无人机时产生漏警或虚警的主要原因及算法解决思路。",
+        options = emptyList(),
+        answer = listOf("产生原因：目标RCS微弱接近噪声底、城市楼宇强地杂波与低速多普勒盲区、飞鸟等动物杂波干扰。\n解决思路：采用相控阵三维敏捷波束驻留、微多普勒频谱特征提取、多通道空时自适应处理（STAP）与交互式多模型（IMM）航迹融合过滤。"),
+        explanation = "考查雷达低慢小目标检测工程算法难点与综合解决方案。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-011",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析11] 阐述无线电被动侦测（RF）在反无人机作战中的技术局限性，并说明如何通过其他手段弥补。",
+        options = emptyList(),
+        answer = listOf("局限性：对于自主航线巡航的无线电静默目标无效；城市复杂多径效应造成测向线偏转；对开源跳频或模拟图传识别率低。\n弥补方案：雷达主动发射电磁波探测物理实体，光电昼夜传感器实现视距成像确认，三者形成主动与被动、宏观与微观的互补体系。"),
+        explanation = "考查单传感器局限性及多源融合防御的必要性。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-012",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析12] 分析雷达探测微小型无人机时产生漏警或虚警的主要原因及算法解决思路。",
+        options = emptyList(),
+        answer = listOf("产生原因：目标RCS微弱接近噪声底、城市楼宇强地杂波与低速多普勒盲区、飞鸟等动物杂波干扰。\n解决思路：采用相控阵三维敏捷波束驻留、微多普勒频谱特征提取、多通道空时自适应处理（STAP）与交互式多模型（IMM）航迹融合过滤。"),
+        explanation = "考查雷达低慢小目标检测工程算法难点与综合解决方案。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-013",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析13] 阐述无线电被动侦测（RF）在反无人机作战中的技术局限性，并说明如何通过其他手段弥补。",
+        options = emptyList(),
+        answer = listOf("局限性：对于自主航线巡航的无线电静默目标无效；城市复杂多径效应造成测向线偏转；对开源跳频或模拟图传识别率低。\n弥补方案：雷达主动发射电磁波探测物理实体，光电昼夜传感器实现视距成像确认，三者形成主动与被动、宏观与微观的互补体系。"),
+        explanation = "考查单传感器局限性及多源融合防御的必要性。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-014",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析14] 分析雷达探测微小型无人机时产生漏警或虚警的主要原因及算法解决思路。",
+        options = emptyList(),
+        answer = listOf("产生原因：目标RCS微弱接近噪声底、城市楼宇强地杂波与低速多普勒盲区、飞鸟等动物杂波干扰。\n解决思路：采用相控阵三维敏捷波束驻留、微多普勒频谱特征提取、多通道空时自适应处理（STAP）与交互式多模型（IMM）航迹融合过滤。"),
+        explanation = "考查雷达低慢小目标检测工程算法难点与综合解决方案。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    ),
+    Question(
+        id = "cuas-short-015",
+        type = QuestionType.SHORT,
+        question = "[工程案例分析15] 阐述无线电被动侦测（RF）在反无人机作战中的技术局限性，并说明如何通过其他手段弥补。",
+        options = emptyList(),
+        answer = listOf("局限性：对于自主航线巡航的无线电静默目标无效；城市复杂多径效应造成测向线偏转；对开源跳频或模拟图传识别率低。\n弥补方案：雷达主动发射电磁波探测物理实体，光电昼夜传感器实现视距成像确认，三者形成主动与被动、宏观与微观的互补体系。"),
+        explanation = "考查单传感器局限性及多源融合防御的必要性。",
+        topic = "低空小型无人飞行器探测反制技术及应用",
+        difficulty = 3
+    )
+);

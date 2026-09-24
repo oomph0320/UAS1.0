@@ -86,13 +86,17 @@ fun UavQuizApp(viewModel: QuizViewModel) {
         }
 
         Screen.UAV_FOUNDATION -> {
+            val primaryQuestions = allQuestions.filter {
+                it.question.topic.contains(com.example.data.model.SubjectCatalog.PRIMARY_SUBJECT.title) ||
+                com.example.data.model.SubjectCatalog.EXTENSION_SUBJECTS.none { ext -> it.question.topic.contains(ext.title) }
+            }
             HomeScreen(
-                allQuestions = allQuestions,
+                allQuestions = primaryQuestions,
                 quizMode = quizMode,
                 isRandomOrder = isRandomOrder,
                 onSetQuizMode = { viewModel.setQuizMode(it) },
                 onSetRandomOrder = { viewModel.setRandomOrder(it) },
-                onStartQuizByType = { viewModel.startQuizByType(it) },
+                onStartQuizByType = { viewModel.startSubjectQuiz(com.example.data.model.SubjectCatalog.PRIMARY_SUBJECT, it) },
                 onNavigate = { viewModel.navigateTo(it) },
                 onStartExam = { viewModel.startSimulatedExam() },
                 onImportText = { text, callback ->
@@ -113,9 +117,16 @@ fun UavQuizApp(viewModel: QuizViewModel) {
             SubjectDetailScreen(
                 subject = selectedSubject,
                 allQuestions = allQuestions,
+                quizMode = quizMode,
+                isRandomOrder = isRandomOrder,
+                onSetQuizMode = { viewModel.setQuizMode(it) },
+                onSetRandomOrder = { viewModel.setRandomOrder(it) },
                 onBackClick = { viewModel.navigateTo(Screen.HOME) },
                 onStartQuiz = { subject, type ->
                     viewModel.startSubjectQuiz(subject, type)
+                },
+                onStartWrongQuiz = { subject ->
+                    viewModel.startSubjectWrongQuiz(subject)
                 },
                 onImportTextForSubject = { text, callback ->
                     viewModel.importQuestionsForSubject(selectedSubject, text, callback)

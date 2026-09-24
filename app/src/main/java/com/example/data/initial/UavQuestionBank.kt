@@ -22,6 +22,14 @@ object UavQuestionBank {
         list.addAll(judgeQuestions)
         list.addAll(fillBlankQuestions)
         list.addAll(shortAnswerQuestions)
+        // 无人机技术基础专项扩展题库 (100道精编核心理论专业题)
+        list.addAll(uavFoundationExpandedQuestions)
+        // 5个全新拓展学科核心题库 (每个模块200道题，共计1000道专业题)
+        list.addAll(counterUasQuestions)
+        list.addAll(radarQuestions)
+        list.addAll(radioQuestions)
+        list.addAll(optoelectronicQuestions)
+        list.addAll(electromagneticQuestions)
         list
     }
 

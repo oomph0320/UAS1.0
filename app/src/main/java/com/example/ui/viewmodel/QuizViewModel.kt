@@ -361,10 +361,34 @@ class QuizViewModel(private val repository: QuizRepository) : ViewModel() {
         }
     }
 
+    fun startSubjectWrongQuiz(subject: SubjectInfo) {
+        val all = allQuestionsWithProgress.value
+        val wrongs = all.filter {
+            val matchesSubject = if (subject.isPrimary) {
+                it.question.topic.contains(subject.title) ||
+                SubjectCatalog.EXTENSION_SUBJECTS.none { ext -> it.question.topic.contains(ext.title) }
+            } else {
+                it.question.topic.contains(subject.title) || it.question.topic == subject.title
+            }
+            matchesSubject && it.isWrong
+        }
+        if (wrongs.isEmpty()) return
+
+        _sessionTitle.value = "${subject.title} · 错题专项强化"
+        _quizPool.value = if (_isRandomOrder.value) wrongs.shuffled() else wrongs
+        _currentIndex.value = 0
+        syncCurrentQuestionDraft(_quizPool.value.firstOrNull())
+        _currentScreen.value = Screen.QUIZ
+    }
+
     fun startSubjectQuiz(subject: SubjectInfo, type: QuestionType? = null) {
         val all = allQuestionsWithProgress.value
         val filtered = if (subject.isPrimary) {
-            if (type != null) all.filter { it.question.type == type } else all
+            val primary = all.filter {
+                it.question.topic.contains(subject.title) ||
+                SubjectCatalog.EXTENSION_SUBJECTS.none { ext -> it.question.topic.contains(ext.title) }
+            }
+            if (type != null) primary.filter { it.question.type == type } else primary
         } else {
             val subQuestions = all.filter {
                 it.question.topic.contains(subject.title) || it.question.topic == subject.title
