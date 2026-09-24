@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>无人机专家 · 智能题库与低空安全综合考评系统</title>
+  <meta name="description" content="无人机执照理论、微小型无人机探测反制、雷达、无线电、光电探测及电磁干扰综合题库系统">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Mammoth.js for Word (.docx) client-side parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+              800: '#155e75',
+              900: '#164e63',
+            },
+            dark: {
+              900: '#0b1120',
+              800: '#0f172a',
+              700: '#1e293b',
+              600: '#334155'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.2);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-[#0b1120] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-[#0f172a]/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="app.navigate('home')">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-400 flex items-center justify-center shadow-lg shadow-cyan-500/20 text-white font-bold text-xl">
+          <i data-lucide="plane" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="font-extrabold text-lg text-white tracking-wide">无人机专家</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800/80 font-mono">WebApp</span>
+          </div>
+          <p class="text-xs text-slate-400 hidden sm:block">低空安全与多学科智能题库系统</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center space-x-2">
+        <button onclick="app.openSearch()" class="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-cyan-400 transition" title="全局搜索">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+        <button onclick="app.openImportModal()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-medium shadow-md shadow-cyan-600/20 transition">
+          <i data-lucide="file-up" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">导入试题/Word</span>
+        </button>
+        <button onclick="app.resetBank()" class="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-amber-400 transition" title="重置/恢复初始题库">
+          <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main App Container -->
+  <main id="app-root" class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 pb-24">
+    <!-- Dynamic views will be rendered here -->
+  </main>
+
+  <!-- Global Modal: Import Questions / Word Document -->
+  <div id="import-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm hidden p-4">
+    <div class="bg-[#0f172a] border border-slate-700 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+            <i data-lucide="upload-cloud" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">导入试题 / Word 文档 (.docx)</h3>
+        </div>
+        <button onclick="app.closeImportModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="py-4 space-y-4 overflow-y-auto custom-scrollbar flex-1">
+        <!-- Subject Target Selector -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 mb-1.5">归入科目：</label>
+          <select id="import-target-subject" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+            <option value="uav_foundation">无人机技术基础（核心题库）</option>
+            <option value="counter_uas_tech">低空小型无人飞行器探测反制技术及应用</option>
+            <option value="radar_detection">雷达探测技术</option>
+            <option value="radio_detection">无线电探测技术</option>
+            <option value="optoelectronic_detection">光电探测原理</option>
+            <option value="electromagnetic_jamming">电磁干扰技术</option>
+          </select>
+        </div>
+
+        <!-- File Upload Area -->
+        <div class="border-2 border-dashed border-slate-700 hover:border-cyan-500/50 rounded-xl p-6 text-center bg-slate-800/30 transition cursor-pointer relative" id="drop-zone">
+          <input type="file" id="word-file-input" accept=".docx,.txt" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full">
+          <i data-lucide="file-text" class="w-10 h-10 mx-auto text-cyan-400 mb-2"></i>
+          <p class="text-sm font-medium text-slate-200">点击上传或将 Word (.docx) / TXT 文件拖拽到此处</p>
+          <p class="text-xs text-slate-500 mt-1">支持纯前端离线解析，试题内容自动提取并智能校验</p>
+        </div>
+
+        <div class="flex items-center my-2 text-xs text-slate-500">
+          <div class="flex-1 border-t border-slate-800"></div>
+          <span class="px-3">或直接粘贴题目纯文本</span>
+          <div class="flex-1 border-t border-slate-800"></div>
+        </div>
+
+        <!-- Textarea Paste Area -->
+        <div>
+          <textarea id="import-text-input" rows="8" placeholder="粘贴题库文本，例如：
+1. 根据规定，轻型无人机适飞空域最高不超过（ ）。
+A. 50米
+B. 120米
+C. 150米
+D. 300米
+答案：B
+解析：真高120米以下为轻型无人机适飞空域范围。" class="w-full bg-slate-800/80 border border-slate-700 rounded-lg p-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 font-mono resize-none"></textarea>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+        <span id="import-status-text" class="text-xs text-slate-400"></span>
+        <div class="flex space-x-3">
+          <button onclick="app.closeImportModal()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-medium transition">取消</button>
+          <button onclick="app.executeImport()" class="px-5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-semibold shadow-lg shadow-cyan-600/30 transition">智能解析并导入</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Floating Tab Bar (Mobile Ergonomics) -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#0f172a]/95 backdrop-blur-md border-t border-slate-800 md:hidden">
+    <div class="grid grid-cols-4 h-16 max-w-md mx-auto">
+      <button onclick="app.navigate('home')" class="flex flex-col items-center justify-center text-slate-400 hover:text-cyan-400 focus:text-cyan-400 transition" id="tab-home">
+        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+        <span class="text-[11px] mt-1">题库主页</span>
+      </button>
+      <button onclick="app.startExam()" class="flex flex-col items-center justify-center text-slate-400 hover:text-cyan-400 focus:text-cyan-400 transition" id="tab-exam">
+        <i data-lucide="award" class="w-5 h-5"></i>
+        <span class="text-[11px] mt-1">模拟考试</span>
+      </button>
+      <button onclick="app.navigate('wrong')" class="flex flex-col items-center justify-center text-slate-400 hover:text-cyan-400 focus:text-cyan-400 transition" id="tab-wrong">
+        <i data-lucide="alert-circle" class="w-5 h-5"></i>
+        <span class="text-[11px] mt-1">错题本</span>
+      </button>
+      <button onclick="app.navigate('favorites')" class="flex flex-col items-center justify-center text-slate-400 hover:text-cyan-400 focus:text-cyan-400 transition" id="tab-favorites">
+        <i data-lucide="bookmark" class="w-5 h-5"></i>
+        <span class="text-[11px] mt-1">重点收藏</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- External & Embedded Scripts -->
+  <script src="./data.js"></script>
+  <script src="./embed_questions.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

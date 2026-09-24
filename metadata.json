@@ -1,0 +1,6 @@
+{
+  "name": "无人机专家",
+  "description": "专业无人机与低空防御知识库，收录无人机技术基础全量真题，并拓展低空反制、雷达探测、无线电探测、光电探测与电磁干扰学科题库体系。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
